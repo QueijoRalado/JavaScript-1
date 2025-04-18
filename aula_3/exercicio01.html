@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="num1" id="num1" placeholder="Digite o 1° número">
+    <span></span>
+    <input type="number" name="num2" id="num2" placeholder="Digite o 2° número">
+    <input type="button" value="somar" onclick="somar();">
+    <div>
+        <p><span id="resultado"></span></p>
+    </div>
+    <script type="text/javascript">
+        function somar(){
+        var valor1 = document.getElementById('num1')
+        var valor2 = document.getElementById('num2')
+        var soma = Number(valor1.value) + Number(valor2.value)
+        document.getElementById('resultado').innerText = `O resultado é ${soma}`
+
+        }
+    </script>
+</body>
+</html>

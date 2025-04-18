@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="triste();">
+    <input type="button" onclick="feliz();">
+    <img src="emoji_triste.jpg" id="rosto" style="width: 500px;">    
+    <script type="text/javascript">
+        function triste(){
+            var tag_img = document.getElementsByTagName('img')[0]
+            console.log(tag_img)
+            tag_img.src="emoji_feliz.webp";            
+        }
+        function feliz(){
+            var tag_img = document.getElementsByTagName('img')[0]
+            console.log(tag_img)
+            tag_img.src="emoji_triste.jpg";
+    
+        }
+    </script>
+</body>
+</html>
