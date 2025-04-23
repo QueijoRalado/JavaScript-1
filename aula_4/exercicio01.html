@@ -8,6 +8,7 @@
 <body>
     <input typ="Number" id="horario" placeholder="Digite o horário" onchange="mudarFundo();">
     <h1 style="font-size: xx-large;"></h1>
+    <h2></h2>
     <script>
         mudarFundo();
         function mudarFundo(){
@@ -15,6 +16,7 @@
             const d = new Date();        
             let tag_body = document.getElementsByTagName('body')[0];
             let tag_h1 = document.getElementsByTagName('h1')[0];
+            let tag_h2 = document.getElementsByTagName('h2')[0];
             var input = document.getElementById('horario');
             let hour = d.getHours();
             let min = d.getMinutes();
@@ -25,18 +27,28 @@
                 console.log("DENTERO DO IF", hour);
             }
             console.log(hour);
-            document.getElementsByTagName('h1')[0].innerText = hour
+            tag_h1.innerText = `Agora são ${hour}:${min}`
 
             console.log(hour)
             if(hour>17 || hour<6){
                 tag_body.style.backgroundImage = "url('cidade_noite.jpg')"
-                tag_h1.style.color = 'white'                
-            }else{
-                tag_body.style.background = "black";
                 tag_h1.style.color = 'white'  
-            }
+                tag_h2.innerText = 'Boa-noite!'
+                tag_h2.style.color = 'white'  
+
+            }else if(hour>12 && hour<=17){  
+                tag_body.style.backgroundImage = "url('cidade_tarde.jpg')"
+                tag_h1.style.color = 'white'  
+                tag_h2.innerText = 'Boa-tarde!'
+                tag_h2.style.color = 'white'  
+            }else if(hour<=12 && hour>=6){  
+                tag_body.style.backgroundImage = "url('manha.jpg')"
+                tag_h1.style.color = 'white'  
+                tag_h2.innerText = 'Bom-dia!'
+                tag_h2.style.color = 'white'
+            
         }
-       
+    }
         
         
     </script>
