@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="Number" id="digito" placeholder="Digite um número... " onchange="tabuada();">
+    <ul id="resultado_tabuada">
+    </ul>
+    <script>
+        function tabuada(){
+            let input = document.getElementById('digito');
+            tag_ul = document.getElementById('resultado_tabuada');
+            while (tag_ul.hasChildNodes()) {
+                tag_ul.removeChild(tag_ul.firstChild);
+            }
+            for (let i = 1; i<11; i++){
+                let tag_li = document.createElement('li')
+                tag_li.innerText = `${digito.value} X ${i} = ${digito.value*i}`;
+                tag_ul.appendChild(tag_li);
+            }
+            
+
+        }
+    </script>
+</body>
+</html>
