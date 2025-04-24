@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>INICIO</h1>
+    <input type="number" id="comeco" placeholder="Define onde começar... ">
+    <h1>FIM</h1>
+    <input type="number" id="termino" placeholder="Define onde terminar... ">
+    <h1>PASSO</h1>
+    <input type="number" id="aumento" placeholder="Define o aumento... " >
+    <button onclick="contador()">começar</button>
+    <ul id="contagem">
+    </ul>
+    <script>
+        function contador(){
+            let inicio = document.getElementById('comeco');
+            let fim = document.getElementById('termino');
+            let passo = document.getElementById('aumento');
+            tag_ul = document.getElementById('contagem');
+            while (tag_ul.hasChildNodes()) {
+                tag_ul.removeChild(tag_ul.firstChild);
+            }
+            if(Number(inicio)<Number(fim)){
+            for (let i = Number(inicio.value); i<=Number(fim.value); i+=Number(passo.value)){
+            let tag_li = document.createElement('li')
+            tag_li.innerText = i;
+            tag_ul.appendChild(tag_li);
+            }
+            }else{
+            for (let i = Number(inicio.value); i>=Number(fim.value); i-=Number(passo.value)){
+            let tag_li = document.createElement('li')
+            tag_li.innerText = i;
+            tag_ul.appendChild(tag_li);
+            }
+            }
+            
+            
+
+        }
+    </script>
+</body>
+</html>
