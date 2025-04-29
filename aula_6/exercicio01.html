@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Agenda</h1>
+    <input type="text" id="nova_tarefa" placeholder="Adicionar tarefa..."><button onclick="adicionar()">ADD</button>
+    
+    <ul id="a_fazer"></ul>
+    
+    <hr>
+
+    <h2>Tarefas concluídas:</h2>
+    <ul id="concluidas"></ul>
+    
+    <script>
+        let tag_ul1 = document.getElementById('a_fazer');
+        let tag_ul2 = document.getElementById('concluidas');
+        
+        function adicionar(){ 
+            let tag_li = document.createElement('li');
+            let tarefa = document.getElementById('nova_tarefa');
+            var IDGerado = Date.now();
+            var horaAtual = new Date(IDGerado);
+            tag_li.innerHTML  = `<input type='checkbox' id=${IDGerado} onclick="verificarChecked(${IDGerado})">${tarefa.value}`;
+            tag_ul1.appendChild(tag_li);
+        }
+
+
+        function verificarChecked(IDGerado){
+            console.log("verificarChecked");
+            console.log(IDGerado)
+            var elementoClicado = document.getElementById(`${IDGerado}`);
+            console.log("ADICIONAR NO TAREFAS CONCLUIDSA");
+            adicionarTarefasConcluidas(elementoClicado);
+            
+        }
+        function adicionarTarefasConcluidas(elem){
+                console.log(elem);
+                tag_li2 = document.createElement('li');                
+                tag_li2.innerText = (elem.parentElement).innerText;
+                elem.parentElement.style.textDecoration="line-through";
+                tag_ul2.appendChild(tag_li2)
+        }
+    </script>
+</body>
+</html>
