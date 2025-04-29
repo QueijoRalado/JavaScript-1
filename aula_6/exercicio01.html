@@ -47,12 +47,17 @@
         function adicionarTarefasConcluidas(elem){
                 console.log(elem);
                 tag_li2 = document.createElement('li');                
+                tag_li2.setAttribute("id",`Concluida_${elem.id}` );
                 tag_li2.innerText = (elem.parentElement).innerText;
                 elem.parentElement.style.textDecoration="line-through";
                 tag_ul2.appendChild(tag_li2)
         }
         function retirarTarefasConcluidas(elem){
-            tag_ul2.removeChild(tag_ul2.firstChild);
+            console.log(elem)
+            //tag_ul2.removeChild(tag_ul2.elem);
+            tag_removida = document.getElementById(`Concluida_${elem.id}`);
+
+            tag_removida.remove();
             elem.parentElement.style.textDecoration="none";
         }
     </script>
