@@ -30,7 +30,7 @@
             let tarefa = document.getElementById('nova_tarefa');
             var IDGerado = Date.now();
             var horaAtual = new Date(IDGerado);
-            tag_li.innerHTML  = `<input type='checkbox' id=${IDGerado} onclick="verificarChecked(${IDGerado})">${tarefa.value}<button onclick="deletar(${IDGerado})"></button>`;
+            tag_li.innerHTML  = `<input type='checkbox' id=${IDGerado} onclick="verificarChecked(${IDGerado})">${tarefa.value}     <button onclick="deletar(${IDGerado})"></button><button onclick="editar(${this})"></button>`;
             tag_ul1.appendChild(tag_li);
             tarefa.value = ''
         }
@@ -38,7 +38,17 @@
             console.log(IDGerado)
             tag_removida = document.getElementById(`${IDGerado}`);
             tag_removida.parentElement.remove();
+            tag_removida = document.getElementById(`Concluida_${IDGerado}`);
+            tag_removida.remove();
             //console.log(tag_removida)
+        }
+        function editar(task){
+            const item = task.parentElement;
+            const texto = item.firstChild.textContent.trim();
+            const novo = prompt("Editar item:", texto);
+            if(novo){
+                item.firstChild.textContent = novo + "";
+            }
         }
 
         function verificarChecked(IDGerado){
