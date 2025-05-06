@@ -52,10 +52,12 @@
             let elemento = document.getElementById(botado)
             let elemento_pai = elemento.parentElement;
             let conteudo = elemento_pai.querySelector('span').textContent;
+            tag_concluida = document.getElementById(`Concluida_${botado}`);
 
             const novo = prompt("Editar item:", conteudo);
             if(novo.length > 0){
                 elemento_pai.querySelector('span').textContent = novo;
+                tag_concluida.textContent = novo;
             }
         }
 
