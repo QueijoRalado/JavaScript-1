@@ -7,6 +7,10 @@ body{
 html{
     height: 100%;
 }
+a{
+    color: white;
+    text-decoration: none;
+}
 nav{
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +25,9 @@ ul{
     justify-content: space-evenly;
     gap: 50px;
     font-size: x-large;
+}
+.pagina_atual{
+    text-decoration: underline rgba(255, 255, 0, 0.806);
 }
 .dado20{
     width: 70px;
