@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes com Media Queries</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            background-color: tomato;
+        }
+        p{
+            color: white;
+            font-size: 70pt;
+        }
+        @media screen and (max-width: 430px){
+            div{
+                background-color: aquamarine;
+            }
+            p{
+                color: black;
+                font-size: larger;
+            }
+            img{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Ainda estou aqui</p>
+    </div>
+    <picture>
+        
+        <source media="(min-width:650px)" srcset="https://rollingstone.com.br/media/uploads/2023/06/kiss-monsters-of-rock-brasil-line-up-foto-getty-images_u5184646475.jpg">
+        <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+        <img src="https://casacor.abril.com.br/_next/image?url=https%3A%2F%2Fd2iwr6cbo83dtj.cloudfront.net%2F2025%2F01%2Fflower-3093072_1280.jpg&w=3840&q=75" alt="Flowers" style="width:auto;">
+    </picture>
+</body>
+</html>
