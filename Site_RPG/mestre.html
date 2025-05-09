@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mobile.css">
     <title>Mestre</title>
+    <style>
+        .conteiner{
+            display: grid;
+            background-color: aqua;
+            grid-template-columns: auto auto auto;
+            grid-template-areas:
+                'header header header header header header'
+                'menu main main main right right'
+                'menu footer footer footer footer footer';
+            opacity: 0.5;
+
+        }
+        .conteiner div{
+            background-color: azure;
+            border: 1px solid black;
+            padding: 20px;
+        }
+        .item1 { grid-area: header; text-align: center; }
+        .item2 { grid-area: menu; }
+        .item3 { grid-area: main; }
+        .item4 { grid-area: right; }
+        .item5 { grid-area: footer; }
+
+    </style>
 </head>
 <body>
     <nav>
@@ -15,5 +39,18 @@
         </ul>
         <img class="grimoriobonito" src="grimoriobonito.png" alt="">
     </nav>
+    <div class="conteiner">
+        
+        <div class="item1">SESSÃO</div>
+
+        <div class="item2">Cenas</div>
+
+        <div class="item3">Descrição e detalhes</div>
+
+        
+        <div class="item4">Playlist</div>
+        
+        <div class="item5">Mural</div>
+    </div>
 </body>
 </html>
