@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 20%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: sans-serif;
+        }
+        
+        header {
+            background-color: #722c2c;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 10px 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00bcd4;
+        }
+        
+        .menu-icon {
+            display: none;
+            visibility: visible;
+            font-size: 28px;
+        
+            cursor: pointer;
+        }
+        
+        
+        @media (max-width: 768px) {
+            .nav-links {
+            display: none;
+            flex-direction: column;
+            background-color: #3e0a0a;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            padding: 10px;
+            }
+        
+            .nav-links.active {
+            display: flex;
+            }
+        
+            .menu-icon {
+            display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div><img src="d20bonito.png" alt=""></div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Mapa</a></li>
+          </ul>
+          <div class="menu-icon">&#9776;</div>
+        </nav>
+      </header>
+      <script>
+      const menuIcon = document.querySelector('.menu-icon');
+      const navLinks = document.querySelector('.nav-links');
+    
+      menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    </script>
+    
+</body>
+</html>

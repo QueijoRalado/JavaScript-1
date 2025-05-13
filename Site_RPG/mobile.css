@@ -14,7 +14,7 @@ a{
 nav{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     background-color: rgb(44, 181, 65);
     border-bottom: 5px rgba(255, 255, 255, 0.708) solid;
     color: white;
@@ -26,6 +26,42 @@ ul{
     gap: 50px;
     font-size: x-large;
 }
+a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover, a:active{
+    color: rgb(127, 228, 179);
+}
+
+
+@media (max-width: 768px) {
+    .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #174a0b;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    
+    }
+
+    
+
+    .nav-links.active {
+    display: flex;
+    }
+
+    .menu-icon {
+    display: block;
+    
+    }
+    
+ }
 .pagina_atual{
     text-decoration: underline rgba(255, 255, 255, 0.806);
 }
