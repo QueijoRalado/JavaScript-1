@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mobile3.css">
+    <title>Mestre</title>
+    
+</head>
+<body onload="carregarCampanhas();">
+    <nav>
+        <a href="index.html" target="_self"><img src="d20bonito.png" alt="logo" class="dado20"></a>
+        <ul class="nav-links">
+            <li class="pagina_atual">Mestre</li>
+            <li>Jogador</li>
+        </ul>
+        <div class="menu-icon"><img class="grimoriobonito" src="grimoriobonito.png" alt=""></div>
+    </nav>
+    <h1 class="item1">Campanhas</h1>
+    <div class="campanhas" id="campanhas">
+ 
+    </div>
+    <script>
+     function carregarCampanhas() {
+        fetch("./campanhas.json")
+            .then((res) => {
+            return res.json();
+            })
+            .then((conteudo_json) => {
+            // Aqui você pode percorrer os dados e adicionar os elementos
+            for (let i = 0; i < conteudo_json.length; i++) {
+                adicionarElementoCampanha(conteudo_json[i]);
+            }
+            })
+            .catch((erro) => {
+            console.error("Erro ao carregar as campanhas:", erro);
+            });
+    }
+
+
+      /*function adicionarElementoCampanha(dados_campanha){
+            let tag_campanhas = document.getElementById("campanhas");
+            let tag_section = document.createElement('section');
+            tag_section.setAttribute("id", dados_campanha.nome);
+            tag_section.setAttribute("class", "item2");
+            tag_section.innerHTML  = `
+                                <h2>${dados_campanha.nome}</h2>
+                                <button>Visitar</button>      
+                                `;
+            tag_campanhas.appendChild(tag_section);    
+       }*/
+       function adicionarElementoCampanha(campanha) {
+            const container = document.getElementById("campanhas");
+
+            // Criar um novo elemento para a campanha
+            const sectionCampanha = document.createElement("section");
+            sectionCampanha.setAttribute("id", campanha.nome);            
+            sectionCampanha.classList.add("campanha", "item2");
+
+            
+            // Adicionar conteúdo à campanha
+            sectionCampanha.innerHTML = `<a>
+                <h3>${campanha.nome}</h3>
+                <p>${campanha.descricao}</p></a>
+            `;
+            
+            // Adicionar o novo elemento ao container
+            container.appendChild(sectionCampanha);
+            }
+        
+
+      </script>
+</body>
+</html>
+
+
+
+<!-- <style>
+    .conteiner{
+        display: grid;
+        background-color: aqua;
+        grid-template-columns: auto auto auto;
+        grid-template-areas:
+            'header header header header header header'
+            'menu main main main right right'
+            'menu footer footer footer footer footer';
+        opacity: 0.5;
+
+    }
+    .conteiner div{
+        background-color: azure;
+        border: 1px solid black;
+        padding: 20px;
+    }
+    .item1 { grid-area: header; text-align: center; }
+    .item2 { grid-area: menu; }
+    .item3 { grid-area: main; }
+    .item4 { grid-area: right; }
+    .item5 { grid-area: footer; }
+
+</style> -->
+<!-- <div class="conteiner">
+        
+        <div class="item1">SESSÃO</div>
+
+        <div class="item2">Cenas</div>
+
+        <div class="item3">Descrição e detalhes</div>
+
+        
+        <div class="item4">Playlist</div>
+        
+        <div class="item5">Mural</div>
+    </div> -->

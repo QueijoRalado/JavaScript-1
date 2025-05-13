@@ -7,7 +7,7 @@
     <title>Mestre</title>
     
 </head>
-<body>
+<body onload="carregarCampanhas();">
     <nav>
         <a href="index.html" target="_self"><img src="d20bonito.png" alt="logo" class="dado20"></a>
         <ul class="nav-links">
@@ -16,28 +16,26 @@
         </ul>
         <div class="menu-icon"><img class="grimoriobonito" src="grimoriobonito.png" alt=""></div>
     </nav>
-    <div class="campanhas">
-        <h1 class="item1">Campanhas</h1>
+    <h1 class="item1">Campanhas</h1>
+    <div class="campanhas" id="campanhas">
         <section class="item2">
-            <h2>Sua primeira Campanha</h2>
-            <button>Jogar</button>
-            
-        </section>
-        <section class="item3">
-            <h2>Sua segunda Campanha</h2>
-            <button>Jogar</button>
-            
+            <h2 id="nome-campanha">Sua primeira Campanha</h2>
+            <button>Visitar</button>            
         </section>
     </div>
     <script>
-        const menuIcon = document.querySelector('.menu-icon');
-        const navLinks = document.querySelector('.nav-links');
-      
-        menuIcon.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-        });
+     function carregarCampanhas() {
+        fetch("./campanhas.json")
+          .then((res) => {
+            return res.json();
+          })
+          .then((conteudo_json) => 
+            document.getElementById("nome-campanha").innerText = conteudo_json[0].nome
+          
+          //console.log(data)
+          );
 
-        
+      }
 
       </script>
 </body>

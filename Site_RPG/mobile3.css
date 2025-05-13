@@ -70,13 +70,7 @@ main{
     
 }
 .campanhas{
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas:
-            'header'
-            'section'
-            'section'
-            'footer';
+    display: flex;
     color: white;
     text-decoration: underline;
 }
