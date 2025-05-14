@@ -6,14 +6,36 @@
     <title>Formulário</title>
 </head>
 <body>
-    <form action="">
+    <form action="" method="GET">
         <label for="nome_da_campanha">Nome</label>
-        <input name="nome_da_campanha" type="text">
+        <input id="nome_campanha" name="nome_da_campanha" type="text">
         <label for="descricao_da_campanha">Descrição</label>
-        <input name="descricao_da_campanha" type="text">
+        <input id="descricao_campanha" name="descricao_da_campanha" type="text">
         <label for="foto_da_campanha">Foto de capa</label>
-        <input name="foto_da_campanha" type="url">
-        <input type="submit" value="Criar">
+        <input id="foto_campanha" name="foto_da_campanha" type="url">
+        <button  type="button" value="Criar" onclick="criar_nome()">Criar</button>
     </form>
+    
+    <div id="lugar"></div>
+    <script>
+        let tag_h1 = document.createElement('h1');
+        let tag_p = document.createElement('p')
+        let tag_img = document.createElement('img')
+        let tag_nome = document.getElementById('nome_campanha')
+        let tag_descricao = document.getElementById('descricao_campanha')
+        let tag_foto = document.getElementById('foto_campanha')
+        let tag_div = document.getElementById('lugar')
+
+        function criar_nome(){
+            tag_h1.innerText = tag_nome.value
+            tag_div.appendChild(tag_h1)
+            tag_p.innerText = tag_descricao.value
+            tag_div.appendChild(tag_p)
+            tag_img.src = tag_foto.value
+            tag_div.appendChild(tag_img)
+
+        }
+        
+    </script>
 </body>
 </html>
