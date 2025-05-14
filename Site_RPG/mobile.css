@@ -70,19 +70,16 @@ main{
     
 }
 .campanhas{
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas:
-            'header'
-            'section'
-            'section'
-            'footer';
+    display: flex;
+    flex-direction: column;
     color: white;
     text-decoration: underline;
 }
-.item1 { grid-area: header; text-align: center; }
-.item2 { grid-area: section; }
-.item4 { grid-area: footer; }
+.item1{
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}
 .campanhas .item2{
     display: flex;
     flex-direction: column;
@@ -94,18 +91,5 @@ main{
     padding: 30px;
 }
 .campanhas .item2 button{
-    width: 50px;
-}
-.campanhas .item3{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    border-style: solid;
-    border-radius: 20px;
-    margin: 20px;
-    padding: 30px;
-}
-.campanhas .item3 button{
-    width: 50px;
+    width: 70px;
 }
