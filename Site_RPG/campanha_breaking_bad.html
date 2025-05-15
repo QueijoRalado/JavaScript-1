@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mobile.css">
+    <title>1ª Campanha</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html" target="_self"><img src="d20bonito_verde.png" alt="logo" class="dado20"></a>
+        <h2>Campanhas</h2>
+        <ul class="nav-links">
+            <li><a href="mestre.html" target="_self">Mestre</a></li>
+            <li><a href="#">Jogador</a></li>
+        </ul>
+        
+        <div class="menu-icon"><img class="grimoriobonito" src="grimorio_bonito_verde.png" alt=""></div>
+    </nav>
+
+    <h2 id="nome_da_campanha"></h2>
+
+    <h3 id="desc_da_campanha">CANCER E DROGAS</h3>
+
+    <p>PLAYERS NA CAMPANHA:</p>
+
+    <ul id="players_da_campanha" class="lista_players"></ul>
+
+    <script>
+   const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+      
+        menuIcon.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+    // Busca os dados do arquivo JSON
+        fetch("campanhas.json")
+        .then(response => response.json()) // converte o conteúdo para objeto
+        .then(dados => {
+
+        const item = dados[0]
+    // Manipula os elementos da página com os dados
+        document.getElementById("nome_da_campanha").innerText = item.nome
+        document.getElementById("desc_da_campanha").innerText = item.descricao
+
+        const lista = document.getElementById("players_da_campanha");
+
+        dados[0].jogadores.forEach(obj => {
+            const nome = Object.keys(obj)[0];
+            const raca = obj[nome];
+
+            const li = document.createElement("li");   // Criar o item da lista
+            li.textContent = `${nome} — ${raca}`;
+
+            lista.appendChild(li); // Adicionar ao <ul>
+});
+
+
+    })
+  .catch(erro => {
+    console.error("Erro ao carregar JSON:", erro);
+  });
+
+    </script>
+</body>
+</html>
