@@ -94,8 +94,15 @@ main{
     width: 70px;
 }
 .lista_players{
-    display: block;
+    display: flex;
     text-align: center;
+    justify-content: space-between;
+    margin: 0;
+}
+.tabela_de_personagens_campanha{
+    display: flex;
+    justify-content: center;
+
 }
 h2{
     text-align: center;
@@ -107,4 +114,12 @@ h3{
 }
 p{
     text-align: center
+}
+th, td {
+    border: 1px solid #124104;
+    word-wrap: break-word;
+    white-space: normal;
+    vertical-align: middle;
+    font-size: 1.1em;
+    text-align: center;
 }
