@@ -22,7 +22,9 @@
         <h2>Fichas Digitais</h2>
         <h2>Ferramentas para o Mestre</h2>
         <button onclick="localStorage.setItem('jsonCarregado', false)" >REFAZER localStorage a partir do JSON</button>
+        <button onclick="exportarCampanhas()">DOWNLOAD</button>
     </main>
+
   
     <script src="js/menu.js">  </script>
     <!-- <script src="js/carregarJSONParaLocalStorage.js"></script> -->
@@ -35,17 +37,33 @@
             })
             .then((conteudo_json) => {
                 // Aqui você armazena o objeto JSON como uma string no localStorage
+                localStorage.setItem("campanhas", []);
                 localStorage.setItem("campanhas", JSON.stringify(conteudo_json));
-                localStorage.setItem("jsonCarregado", true);
+                localStorage.setItem("jsonCarregado", 'true');
             
             })
             .catch((erro) => {
                 console.error("Erro ao carregar as campanhas:", erro);
             });
     }
-    if (localStorage.getItem("jsonCarregado")==false){
+    if (localStorage.getItem("jsonCarregado")!='true'){
         carregarCampanhasJson();
     }
+
+    function exportarCampanhas() {
+    const campanhas = JSON.parse(localStorage.getItem("campanhas"));
+
+    const blob = new Blob([JSON.stringify(campanhas, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "campanhas.json";  // Nome do arquivo de download
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+
+
 
 
     </script>
