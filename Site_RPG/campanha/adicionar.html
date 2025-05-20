@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Nova Campanha</title>
+</head>
+<body>
+    <form>
+        <label for="nome_campanha">Nome Campanha:</label><br>
+        <input type="text" id="nome_campanha" name="nome_campanha"><br>
+
+        <label for="descricao_campanha">Descrição:</label><br>
+        <input type="text" id="descricao_campanha" name="descricao_campanha"><br><br>
+
+        <button type="button" onclick="adicionarCampanhas()"> ADICIONAR CAMPANHA</button>  
+    </form>
+
+    <script>
+
+    function adicionarCampanhas() {
+        let nome_campanha = document.getElementById("nome_campanha").value;
+        let desc_campanha = document.getElementById("descricao_campanha").value;
+
+        if (!nome_campanha || !desc_campanha) {
+            alert("Por favor, preencha todos os campos!");
+            return;
+        }
+
+        // Caminho relativo ao servidor local
+        fetch("../dados/campanhas.json")
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erro ao carregar o arquivo JSON. Status: " + res.status);
+                }
+                return res.json();
+            })
+            .then((conteudo_json) => {
+                console.log("Campanhas carregadas:", conteudo_json);
+
+                // Cria um novo objeto de campanha com os valores inseridos
+                let novaCampanha = {
+                    nome: nome_campanha,
+                    descricao: desc_campanha
+                };
+
+                // Adiciona a nova campanha ao array de campanhas
+                conteudo_json.push(novaCampanha);
+
+                console.log("Campanha adicionada:", novaCampanha);
+                console.log("Campanhas atualizadas:", conteudo_json);
+
+                // Aqui você pode enviar os dados atualizados para o servidor, se necessário
+            })
+            .catch((erro) => {
+                console.error("Erro ao carregar as campanhas:", erro);
+            });
+
+        alert("Teste");
+    }
+    </script>
+</body>
+</html>

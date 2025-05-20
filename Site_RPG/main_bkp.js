@@ -1,5 +1,14 @@
+const menuIcon = document.querySelector('.menu-icon');
+const navLinks = document.querySelector('.nav-links');
+
+menuIcon.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+
+
 function carregarCampanhas() {
-fetch("../dados/campanhas.json")
+fetch("../campanhas.json")
     .then((res) => {
     return res.json();
     })
@@ -14,7 +23,6 @@ fetch("../dados/campanhas.json")
     console.error("Erro ao carregar as campanhas:", erro);
     });
 }
-/*NÃO SABERMOS SE FUNCIONA */
 function editarCampanhas(campanha){
     fetch('campanhas.json')
         .then(response => {
@@ -37,13 +45,28 @@ function editarCampanhas(campanha){
 }
 
 
-function adicionarElementoCampanha(campanha) {      
+/*function adicionarElementoCampanha(dados_campanha){
+    let tag_campanhas = document.getElementById("campanhas");
+    let tag_section = document.createElement('section');
+    tag_section.setAttribute("id", dados_campanha.nome);
+    tag_section.setAttribute("class", "item2");
+    tag_section.innerHTML  = `
+                        <h2>${dados_campanha.nome}</h2>
+                        <button>Visitar</button>      
+                        `;
+    tag_campanhas.appendChild(tag_section);    
+}*/
+function adicionarElementoCampanha(campanha) {
+   
+    
     const container = document.getElementById("campanhas");
+
     // Criar um novo elemento para a campanha
     const sectionCampanha = document.createElement("section");
     sectionCampanha.setAttribute("id", campanha.nome);            
     sectionCampanha.classList.add("campanha", "item2");
 
+    
     // Adicionar conteúdo à campanha
     sectionCampanha.innerHTML = `<a>
         <h3>${campanha.nome}</h3>
