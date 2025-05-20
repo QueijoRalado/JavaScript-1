@@ -16,11 +16,37 @@
         </ul>
         <div class="menu-icon"><img class="grimoriobonito" src="../imagens/grimorio_bonito_verde.png" alt=""></div>
     </nav>
-    <h1 class="item1">Campanhas</h1>
+    <h1 class="item1" >Campanhas</h1>
     <div class="campanhas" id="campanhas">
  
     </div>
     <script src="../menu.js">  </script>
-    <script src="../main.js">  </script>
+    <script>
+        let campanhas = JSON.parse(localStorage.getItem("campanhas"));
+        for (let i = 0; i < campanhas.length; i++) {
+        adicionarElementoCampanha(campanhas[i]);
+        
+    }
+    
+    function adicionarElementoCampanha(campanha) {      
+        const container = document.getElementById("campanhas");
+        // Criar um novo elemento para a campanha
+        const sectionCampanha = document.createElement("section");
+        sectionCampanha.setAttribute("id", campanha.nome);            
+        sectionCampanha.classList.add("campanha", "item2");
+
+        // Adicionar conteúdo à campanha
+        sectionCampanha.innerHTML = `<a>
+            <h3>${campanha.nome}</h3>
+            <p>${campanha.descricao}</p></a>
+            <button>Acessar</button>
+        `;
+        
+        // Adicionar o novo elemento ao container
+        container.appendChild(sectionCampanha);
+        
+    
+    }
+    </script>
 </body>
 </html

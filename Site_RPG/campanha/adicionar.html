@@ -1,63 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Nova Campanha</title>
+    <title>Adicionar Campanha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <form>
-        <label for="nome_campanha">Nome Campanha:</label><br>
-        <input type="text" id="nome_campanha" name="nome_campanha"><br>
-
-        <label for="descricao_campanha">Descrição:</label><br>
-        <input type="text" id="descricao_campanha" name="descricao_campanha"><br><br>
-
-        <button type="button" onclick="adicionarCampanhas()"> ADICIONAR CAMPANHA</button>  
+    <h1>Adicionar Nova Campanha</h1>
+    <form id="formCampanha">
+        <input type="text" id="nome" placeholder="Nome da campanha" required>
+        <input type="text" id="descricao" placeholder="Descrição" required>
+        <input type="date" id="dataInicio" placeholder="Data de Início" required>
+        <input type="date" id="dataFim" placeholder="Data de Fim" required>
+        <button type="submit">Adicionar Campanha</button>
     </form>
+
+    <h2>Campanhas Salvas</h2>
+    <ul id="listaCampanhas"></ul>
 
     <script>
 
-    function adicionarCampanhas() {
-        let nome_campanha = document.getElementById("nome_campanha").value;
-        let desc_campanha = document.getElementById("descricao_campanha").value;
+        // Função para adicionar nova campanha
+        function adicionarCampanha(event) {
+            event.preventDefault(); // Evita o envio do formulário e recarregamento da página
 
-        if (!nome_campanha || !desc_campanha) {
-            alert("Por favor, preencha todos os campos!");
-            return;
+            const nome = document.getElementById("nome").value;
+            const descricao = document.getElementById("descricao").value;
+            const dataInicio = document.getElementById("dataInicio").value;
+            const dataFim = document.getElementById("dataFim").value;
+
+            // Verifica se todos os campos estão preenchidos
+            if (!nome || !descricao || !dataInicio || !dataFim) {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+
+            const novaCampanha = {
+                nome,
+                descricao,
+                dataInicio,
+                dataFim
+            };
+
+            // Carrega as campanhas existentes ou cria uma lista vazia
+            let campanhas = JSON.parse(localStorage.getItem("campanhas")) || [];
+            campanhas.push(novaCampanha);
+
+            // Salva novamente no localStorage
+            localStorage.setItem("campanhas", JSON.stringify(campanhas));
+
+            // Limpa o formulário
+            document.getElementById("formCampanha").reset();
+
+            // Atualiza a lista de campanhas
+            //carregarCampanhas();
+            window.location.href = "./";
         }
 
-        // Caminho relativo ao servidor local
-        fetch("../dados/campanhas.json")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Erro ao carregar o arquivo JSON. Status: " + res.status);
-                }
-                return res.json();
-            })
-            .then((conteudo_json) => {
-                console.log("Campanhas carregadas:", conteudo_json);
+        // Adiciona o evento de submit no formulário
+        document.getElementById("formCampanha").addEventListener("submit", adicionarCampanha);
 
-                // Cria um novo objeto de campanha com os valores inseridos
-                let novaCampanha = {
-                    nome: nome_campanha,
-                    descricao: desc_campanha
-                };
-
-                // Adiciona a nova campanha ao array de campanhas
-                conteudo_json.push(novaCampanha);
-
-                console.log("Campanha adicionada:", novaCampanha);
-                console.log("Campanhas atualizadas:", conteudo_json);
-
-                // Aqui você pode enviar os dados atualizados para o servidor, se necessário
-            })
-            .catch((erro) => {
-                console.error("Erro ao carregar as campanhas:", erro);
-            });
-
-        alert("Teste");
-    }
+  
     </script>
 </body>
 </html>
