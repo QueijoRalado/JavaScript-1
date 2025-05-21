@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(to bottom, #11954a, #000000);
+    background: linear-gradient(to bottom, #066830, #000000);
     background-repeat: no-repeat;
     height: 100%;
     margin: 0;
@@ -93,16 +93,55 @@ main{
 .campanhas .item2 button{
     width: 70px;
 }
-.lista_players{
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    margin: 0;
-}
+
 .tabela_de_personagens_campanha{
     display: flex;
     justify-content: center;
+    width: 100%;
+    border-collapse: collapse;
 
+}
+.class_nome_da_campanha{
+    color: rgb(167, 211, 177);
+}
+.class_desc_da_campanha{
+    color: rgb(167, 211, 177);
+}
+.class_anuncio_de_players{
+    color: rgb(167, 211, 177);
+}
+.tabela_de_personagens_campanha tr, th, td{
+    color: rgb(167, 211, 177);
+}
+.cor_players{
+    color: rgb(186, 221, 184);
+    text-decoration: none;
+}
+.cor_colunas{
+    color: rgb(4, 85, 1);
+}
+.borda_imagem{
+    border: 3px solid rgb(186, 221, 184);
+}
+.class_img_da_campanha{
+    text-align: center;
+    margin-top: 50px;
+}
+.artigos{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 75px;
+}
+.leta_gande{
+    font-size: 25px;
+    color: rgb(78, 168, 75);
+}
+.leta_peqena{
+    color: #066830;
 }
 h2{
     text-align: center;
@@ -116,10 +155,15 @@ p{
     text-align: center
 }
 th, td {
-    border: 1px solid #124104;
     word-wrap: break-word;
     white-space: normal;
     vertical-align: middle;
     font-size: 1.1em;
     text-align: center;
+    border-collapse: collapse;
 }
+tr{
+    background-color: #108141;
+}
+
+
