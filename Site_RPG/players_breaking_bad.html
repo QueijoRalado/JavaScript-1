@@ -22,11 +22,14 @@ fetch('players_breaking_bad.json')
       .then(response => response.json())
       .then(dados => {
         jogadores = dados
+        escolha_de_players = document.getElementById("id_caixas_de_escolha_players")
         
         jogadores.forEach(jogador => {
+            const criando_player = document.createElement("p")
             const jogador_atual = Object.keys(jogador)[0];
             console.log(jogador_atual)
-            document.getElementById("id_caixas_de_escolha_players").innerHTML = jogador_atual
+            criando_player.innerHTML = `${jogador_atual}`
+            escolha_de_players.appendChild(criando_player)
         });
       })
       .catch(error => {
