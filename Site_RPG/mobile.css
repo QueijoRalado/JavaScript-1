@@ -1,6 +1,6 @@
 body{
     background: linear-gradient(to bottom, #066830, #000000);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
     margin: 0;
 }
@@ -142,6 +142,19 @@ main{
 }
 .leta_peqena{
     color: #066830;
+}
+.caixa_dos_players{
+    border: solid 10px;
+    border-radius: 5px;
+    border-color: rgb(118, 48, 143);
+}
+.body_players{
+    padding-left: 120px;
+    padding-right: 120px;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
 }
 h2{
     text-align: center;

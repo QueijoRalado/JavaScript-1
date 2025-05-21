@@ -70,7 +70,12 @@
         document.getElementById("nome_da_campanha").innerText = item.nome.toUpperCase()
         document.getElementById("desc_da_campanha").innerText = item.descricao
         document.getElementById("id_inicio").innerHTML = item.inicio
-        document.getElementById("id_fim").innerHTML = item.fim
+        console.log(item.fim)
+        if(item.fim===null){
+            document.getElementById("id_fim").innerHTML = "Indefinido"
+        } else {
+            document.getElementById("id_fim").innerHTML = item.fim
+        }
         document.getElementById("imagem_da_campanha").src = item.img
 
 
