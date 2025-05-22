@@ -1,11 +1,14 @@
+/* O Geral */
 body{
     background: linear-gradient(to right, #11954a, #000000);
     background-repeat: repeat;
     height: 100%;
     margin: 0;
 }
-html{
-    height: 100%;
+main{
+    color: rgb(234, 234, 234);
+    text-decoration: underline rgba(255, 255, 255, 0.722);
+    
 }
 nav{
     display: flex;
@@ -31,8 +34,16 @@ a{
 a:hover, a:active{
     color: rgb(127, 228, 179);
 }
+.dado20{
+    width: 70px;
+    
+}
+.grimoriobonito{
+    width: 70px;
+    margin-left: 30px;
+}
 
-
+/* estamos mexendo com o hamburguinho (menu) */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -43,6 +54,7 @@ a:hover, a:active{
         right: 0;
         width: 200px;
         padding: 10px;
+        color: white;
     }
    
     .nav-links.active {
@@ -52,23 +64,13 @@ a:hover, a:active{
         display: block;    
     }    
  }
+ /* Mexendo com a página do mestre */
 
 .pagina_atual{
     text-decoration: underline rgba(255, 255, 255, 0.806);
 }
-.dado20{
-    width: 70px;
-    
-}
-.grimoriobonito{
-    width: 70px;
-    margin-left: 30px;
-}
-main{
-    color: rgb(234, 234, 234);
-    text-decoration: underline rgba(255, 255, 255, 0.722);
-    
-}
+
+
 .campanhas{
     display: flex;
     flex-direction: column;

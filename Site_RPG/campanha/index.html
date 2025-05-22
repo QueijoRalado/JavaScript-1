@@ -26,16 +26,17 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modalEditarCampanhaLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="modalEditarCampanhaLabel">Editando</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Editar campanha com ID: <span id="campanhaId"></span></p>
                 <form id="formEditarCampanha">
                     <input type="text" id="nomeEditar" placeholder="Nome da campanha" required>
-                    <input type="text" id="descricaoEditar" placeholder="Descrição" required>
+                    <!-- <input type="text" id="descricaoEditar" rows="4" cols="50" required> -->
+                    <textarea id="descricaoEditar" name="descricaoEditar" placeholder="Descrição"  rows="4" cols="50" required></textarea>
                     <input type="date" id="dataInicioEditar" placeholder="Data de Início" required>
-                    <input type="date" id="dataFimEditar" placeholder="Data de Fim" required>
+                    
                 </form>                
             </div>
             <div class="modal-footer">
@@ -58,6 +59,7 @@
         
     }
     //parseInt(a.match(/\d+/)[0]);
+    
 
     function adicionarElementoCampanha(campanha, pos) {      
         const container = document.getElementById("campanhas");
@@ -69,10 +71,9 @@
 
         // Adicionar conteúdo à campanha
         // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarCampanha">Editar via Target</button>
-        sectionCampanha.innerHTML = `<a>
+        sectionCampanha.innerHTML = `<a onclick="abirCampanha(${pos})" href="#">
             <h3>${campanha.nome}</h3>
             <p>${campanha.descricao}</p></a>
-            <button>Acessar</button>
             <button type="button" class="btn btn-primary" onclick="editarCampanha(${pos})" >Editar</button>        
         `;
         
@@ -104,7 +105,7 @@
             document.getElementById('nomeEditar').value = campanha.nome;
             document.getElementById('descricaoEditar').value = campanha.descricao;
             document.getElementById('dataInicioEditar').value = campanha.dataInicio;
-            document.getElementById('dataFimEditar').value = campanha.dataFim;
+            
 
 
             // Exibe a modal
@@ -115,13 +116,13 @@
                         const nome = document.getElementById('nomeEditar').value;
                         const descricao = document.getElementById('descricaoEditar').value;
                         const dataInicio = document.getElementById('dataInicioEditar').value;
-                        const dataFim = document.getElementById('dataFimEditar').value;
+                        
 
                         // Atualiza os dados da campanha no array de campanhas
                         campanha.nome = nome;
                         campanha.descricao = descricao;
                         campanha.dataInicio = dataInicio;
-                        campanha.dataFim = dataFim;
+                        campanha.dataFim = null;
 
                         // Atualiza o localStorage com as campanhas modificadas
                         const index = campanhas.findIndex(c => c.id === idCampanha);
@@ -136,6 +137,13 @@
                         alert("Campanha atualizada com sucesso!");
                         location.reload();
                     };
+
+        }
+        function abirCampanha(idCampanha){
+            let campanha = campanhas[idCampanha];
+            localStorage.setItem('campanha_selecionada', JSON.stringify(campanha));
+            window.location.href = "./detalhes.html";
+            
 
         }
     </script>
