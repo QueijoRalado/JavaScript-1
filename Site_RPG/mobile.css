@@ -1,6 +1,6 @@
 /* O Geral */
 body{
-    background: linear-gradient(to right, #11954a, #000000);
+    background: linear-gradient(to right, #043d1d, #000000);
     background-repeat: repeat;
     height: 100%;
     margin: 0;
@@ -16,7 +16,7 @@ nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: rgb(44, 181, 65);
+    background-color: rgb(0, 0, 0);
     border-bottom: 5px rgba(255, 255, 255, 0.708) solid;
     color: white;
 }
@@ -50,7 +50,7 @@ a:hover, a:active{
     .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #174a0b;
+        background-color: #000000;
         position: absolute;
         top: 60px;
         right: 0;
