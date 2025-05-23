@@ -1,51 +1,16 @@
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../mobile.css">
-    <script>
-        function carregarConteudoCampanha(){
-            let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
-            document.title = campanha.nome;
-            document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
-            document.getElementById("desc_da_campanha").innerText = campanha.descricao;
-            document.getElementById("id_inicio").innerHTML = campanha.inicio
-            console.log(campanha.fim)
-            if(campanha.fim===null){
-                document.getElementById("id_fim").innerHTML = "Indefinido"
-            } else {
-                document.getElementById("id_fim").innerHTML = campanha.fim
-            }
-            document.getElementById("imagem_da_campanha").src = campanha.img
-        }
-
-        // const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
-        // const jogadores = campanha.jogadores;
-
-        // jogadores.forEach(jogador => {
-        //   const nomePlayer = Object.keys(jogador)[0];
-        //   const [personagem, raca, classe] = jogador[nomePlayer];
-
-        //   const linha = document.createElement("tr");
-
-        //     linha.innerHTML = `
-        //     <th scope="row"><a href="#" class="cor_players">${nomePlayer}</a></th>
-        //     <td>${personagem}</td>
-        //     <td>${raca}</td>
-        //     <td>${classe}</td>
-        //     `;
-
-        //     tabela.appendChild(linha);
-        // });
-    </script>
-    
+    <title>1ª Campanha</title>
 </head>
-<body onload="carregarConteudoCampanha();">
+<body>
     <nav>
-        <a href="../index.html" target="_self"><img src="../imagens/d20bonito_verde.png" alt="logo" class="dado20"></a>
+        <a href="index.html" target="_self"><img src="../imagens/d20bonito_verde.png" alt="logo" class="dado20"></a>
         <h2>Campanhas</h2>
         <ul class="nav-links">
-            <li><a href="../campanha/index.html" target="_self">Mestre</a></li>
+            <li><a href="mestre.html" target="_self">Mestre</a></li>
             <li><a href="#">Jogador</a></li>
         </ul>
         
@@ -97,7 +62,45 @@
         menuIcon.addEventListener('click', () => {
           navLinks.classList.toggle('active');
         });
-     
+        fetch('campanhas.json')
+      .then(response => response.json())
+      .then(dados => {
+        const item = dados[0]
+
+        document.getElementById("nome_da_campanha").innerText = item.nome.toUpperCase()
+        document.getElementById("desc_da_campanha").innerText = item.descricao
+        document.getElementById("id_inicio").innerHTML = item.inicio
+        console.log(item.fim)
+        if(item.fim===null){
+            document.getElementById("id_fim").innerHTML = "Indefinido"
+        } else {
+            document.getElementById("id_fim").innerHTML = item.fim
+        }
+        document.getElementById("imagem_da_campanha").src = item.img
+
+
+        const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
+        const jogadores = dados[0].jogadores;
+
+        jogadores.forEach(jogador => {
+          const nomePlayer = Object.keys(jogador)[0];
+          const [personagem, raca, classe] = jogador[nomePlayer];
+
+          const linha = document.createElement("tr");
+
+            linha.innerHTML = `
+            <th scope="row"><a href="#" class="cor_players">${nomePlayer}</a></th>
+            <td>${personagem}</td>
+            <td>${raca}</td>
+            <td>${classe}</td>
+            `;
+
+            tabela.appendChild(linha);
+        });
+      })
+      .catch(error => {
+        console.error('Erro ao carregar o JSON:', error);
+      });
       
     </script>
 </body>
