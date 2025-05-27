@@ -10,17 +10,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Crete+Round:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     
     <title>Criador de RPG</title>
+<style>
     
+      :root {
+        --cor-fundo: #2f1335;
+        --cor-texto: #ffffff;
+        --cor-destaque: #ce3762;
+      }
+      .botao-tema {
+      background-color: var(--cor-destaque);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: var(--cor-destaque);
+    }
+ </style>
 </head>
 <body>
+
     <nav>
-        <a href="#" target="_self"><img src="imagens/d20bonito_verde.png" alt="logo" class="dado20"></a>
+        <a href="#" target="_self"><img src="imagens/d20_bonito.png" alt="logo" class="dado20"></a>
         <ul class="nav-links">
             <li><a href="./campanha/index.html" target="_self">Mestre</a></li>
             <li><a href="#">Jogador</a></li>
         </ul>
         
-        <div class="menu-icon"><img class="grimoriobonito" src="imagens/grimorio_bonito_verde.png" alt=""></div>
+        <div class="menu-icon"><img class="grimoriobonito" src="imagens/grimorio_bonito.png" alt=""></div>
     </nav>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         
@@ -56,12 +77,15 @@
      </div>
    </div> 
     <main>
+      <!-- <img src="./imagens/d20s2_verde.png" alt=""> -->
         <h2 class="text-center" >O que é RPG?</h2>
          <p>RPG,é um tipo de jogo em que os jogadores assumem os papéis de personagens fictícios e participam de uma história interativa. Nesse tipo de jogo, os jogadores tomam decisões que afetam a narrativa e o desenvolvimento dos personagens.</p>
-        <img src="./imagens/d20s2.webp" alt="">
+        
          <p>O jogo pode ser realizado de diversas maneiras, como em mesas com papel, caneta e dados, ou em versões digitais, como jogos de computador ou videogame. O foco está na imersão, na criatividade e na interação entre os jogadores e o ambiente do jogo. O objetivo é viver uma aventura e fazer escolhas que moldam o rumo da história e o crescimento do personagem.</p>
         <h2 class="text-center">Fichas Digitais</h2>
+        <p>Um tipo simples de ficha para nosso teste Inicial, contendo <br><b>Nome</b><br><b>Raça</b><br><b>Classe</b><br><b>Atributos básicos</b><br><b>Descrição</b></p>
         <h2 class="text-center">Ferramentas para o Mestre</h2>
+        <p><b>Salvar suas campanhas</b><br><b>Atribuir jogadores e dados</b><br><b>Espaços para organizar as sessões e suas cenas</b></p>
 
         <button onclick="localStorage.setItem('jsonCarregado', false)" >REFAZER localStorage a partir do JSON</button>
         <button onclick="exportarCampanhas()">DOWNLOAD</button>
@@ -109,8 +133,28 @@
 
 
     </script>
+ <button class="botao-tema" onclick="aplicarTemaClaro()">Claro</button>
+ <button class="botao-tema" onclick="aplicarTemaEscuro()">Escuro</button>
+ <button class="botao-tema" onclick="aplicarTemaColorido()">Colorido</button>
+  <script>
+  function aplicarTemaClaro() {
+  document.documentElement.style.setProperty('--cor-fundo', '#0a3740');
+  document.documentElement.style.setProperty('--cor-texto', '#ffffff');
+  document.documentElement.style.setProperty('--cor-destaque', '#4CAF50');
+  }
 
+  function aplicarTemaEscuro() {
+  document.documentElement.style.setProperty('--cor-fundo', '#2f1335');
+  document.documentElement.style.setProperty('--cor-texto', '#ffffff');
+  document.documentElement.style.setProperty('--cor-destaque', '#ce3762');
+  }
 
+  function aplicarTemaColorido() {
+  document.documentElement.style.setProperty('--cor-fundo', '#000000');
+  document.documentElement.style.setProperty('--cor-texto', '#ffffff');
+  document.documentElement.style.setProperty('--cor-destaque', '#ffb752');
+  }
+</script>
 
 </body>
 </html>

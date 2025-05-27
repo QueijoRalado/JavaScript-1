@@ -1,24 +1,21 @@
 /* O Geral */
 body{
-    background: linear-gradient(to right, #043d1d, #000000);
+    background-color: var(--cor-fundo);
     background-repeat: repeat;
     height: 100%;
     margin: 0;
-    color: white;
+    
     font-family: 'Arvo', 'Crete Round', 'PT Serif', 'Volkhov', sans-serif
 }
-main{
-    color: rgb(234, 234, 234);
-    text-decoration: underline rgba(255, 255, 255, 0.722);
-    
-}
+
+
 nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: rgb(0, 0, 0);
-    border-bottom: 5px rgba(255, 255, 255, 0.708) solid;
-    color: white;
+    background-color: var(--cor-fundo);
+    border-bottom: 5px var(--cor-destaque) solid;
+    
 }
 ul{
     display: flex;
@@ -28,13 +25,13 @@ ul{
     font-size: x-large;
 }
 a{
-    color: rgb(255, 255, 255);
+    color: var(--cor-texto);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover, a:active{
-    color: rgb(127, 228, 179);
+    color: var(--cor-destaque);
 }
 .dado20{
     width: 70px;
@@ -56,7 +53,7 @@ a:hover, a:active{
         right: 0;
         width: 200px;
         padding: 10px;
-        color: white;
+       
     }
    
     .nav-links.active {
@@ -77,19 +74,19 @@ a:hover, a:active{
 .campanhas{
     display: flex;
     flex-direction: column;
-    color: white;
+    
     text-decoration: underline;
 }
 .item1{
     text-align: center;
-    color: white;
+    
     text-decoration: underline;
 }
 .campanhas .item2{
     display: flex;
     flex-direction: column;
     background-image: url(./imagens/foto_default_verde.webp);
-    color: rgb(255, 255, 255);
+    
     border: solid 5px rgba(0, 128, 0, 0.337);
     border-radius: 20px;
     margin: 20px;
@@ -159,17 +156,23 @@ a:hover, a:active{
 h1{
     text-align: center;
     font-size: 40px;
+    color: var(--cor-destaque);
 }
 h2{
     text-align: center;
     font-size: 25px;
+    color: var(--cor-destaque);
 }
 h3{
     text-align: center;
     font-size: 20px;
+    color: var(--cor-destaque);
 }
 p{
-    text-align: center
+    text-align: center;
+    font-size: 150%;
+    margin: 20px;
+    color: var(--cor-texto);
 }
 th, td {
     word-wrap: break-word;
@@ -181,9 +184,4 @@ th, td {
 }
 tr{
     background-color: #108141;
-}
-p{
-    font-size: 150%;
-    color: #ffffff;
-    margin: 20px;
 }

@@ -33,10 +33,21 @@
         button:hover {
             background-color: #45a049;
         }
+        .cima{
+            display: flex;
+        }
+        a{
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
-    <h1 class="text-center">Adicionar Nova Campanha</h1>
+    <div class="cima">
+         <a style="width: 10%"; href="index.html"><img style="width: 40px;" src="../imagens/icone-x-noir.png" alt="sair"></a>
+        <h1 class="text-center">Adicionar Nova Campanha</h1>
+    </div>
+    
     <form id="formCampanha">
         <input autocomplete="off" type="text" id="nome" placeholder="Nome da campanha" required>
         <textarea id="descricao" name="descricaoEditar" placeholder="Descrição"  rows="4" cols="50" required></textarea>
@@ -50,6 +61,7 @@
     <h2 class="text-center">Campanhas Salvas</h2>
     <hr>
     <div id="listaCampanhas"></div>
+    
 
     <script>
 
