@@ -143,14 +143,16 @@ main{
 .leta_peqena{
     color: #066830;
 }
-.caixa_dos_players{
-    border: solid 10px;
+.caixas_de_escolha_players{
+    padding-top: 7px;
+    border: solid 5px;
     border-radius: 5px;
-    border-color: rgb(118, 48, 143);
+    border-color: rgb(48, 143, 53);
+    justify-content: center;
 }
 .body_players{
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 h1{
     text-align: center;

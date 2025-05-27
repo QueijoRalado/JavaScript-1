@@ -7,14 +7,15 @@
     <title>Ficha</title>
 </head>
 <body class="body_players">
-    <h1 class="leta_gande" id="id_ficha_player"></h1>
+    <h1 class="leta_gande">PLAYERS ADICIONADOS:</h1>
     
-    
+    <button>ADICIONAR PLAYERS</button>
+    <button>EXCLUIR PLAYERS</button>
 
 
-    <div class="caixas_de_escolha_players" id="id_caixas_de_escolha_players">
-        
+    <div id="id_caixas_de_escolha_players">
     </div>
+
     <script>
         ficha_ativa = false
 
@@ -23,12 +24,18 @@ fetch('players_breaking_bad.json')
       .then(dados => {
         jogadores = dados
         escolha_de_players = document.getElementById("id_caixas_de_escolha_players")
-        
+
         jogadores.forEach(jogador => {
             const criando_player = document.createElement("p")
             const jogador_atual = Object.keys(jogador)[0];
-            console.log(jogador_atual)
-            criando_player.innerHTML = `${jogador_atual}`
+            const personagens = jogador[jogador_atual];
+            const personagens2 = Object.keys(personagens)
+
+            console.log(personagens2)
+
+            criando_player.setAttribute("class", `caixas_de_escolha_players`)
+
+            criando_player.innerHTML = `<a>${jogador_atual}</a><br><p>PERSONAGENS CRIADOS:</p>`
             escolha_de_players.appendChild(criando_player)
         });
       })
