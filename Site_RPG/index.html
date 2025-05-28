@@ -20,7 +20,7 @@
       .botao-tema {
       background-color: var(--cor-destaque);
       color: white;
-      border: none;
+      border: solid  var(--cor-texto) px ;
       padding: 10px 20px;
       cursor: pointer;
       font-weight: bold;
@@ -54,15 +54,15 @@
        
         <div class="carousel-inner">
          <div class="item active">
-           <img src="https://i.kickstarter.com/assets/042/189/861/d93c24814550f36d645051b7bb3c9b5a_original.jpg?anim=false&fit=cover&gravity=auto&height=576&origin=ugc&q=92&v=1693922974&width=1024&sig=YYbVg1wVp22DXaN7%2FPkTqWYJXVmumWjt%2Fejq%2FZMnKZc%3D" alt="Wilderfeast" style="width:180%;">
+           <img src="https://mesaderpg.com.br/wp-content/uploads/2020/10/tormenta-rpg.jpg" alt="Wilderfeast" style="width:180%;">
          </div>
    
          <div class="item">
-           <img src="https://i0.wp.com/geekpopnews.com.br/wp-content/uploads/2023/10/ordem-paranormal-cellbit.jpg?fit=1200%2C675&ssl=1" alt="Ordem-paranormal" style="width:100%;">
+           <img src="https://mesaderpg.com.br/wp-content/uploads/2020/11/nerdcast-rpg-cthulhu-e1605304444228.jpg" alt="Ordem-paranormal" style="width:100%;">
          </div>
        
          <div class="item">
-           <img src="https://mesaderpg.com.br/wp-content/uploads/2021/09/livros-basicos-dd.jpg" alt="Monster" style="width:100%;">
+           <img src="https://blackcompany.com.br/wp-content/uploads/2024/04/rpg101.jpg" alt="Monster" style="width:100%;">
          </div>
        </div>
     
@@ -90,8 +90,14 @@
         <button onclick="localStorage.setItem('jsonCarregado', false)" >REFAZER localStorage a partir do JSON</button>
         <button onclick="exportarCampanhas()">DOWNLOAD</button>
     </main>
-
-  
+    <footer>
+      <button class="botao-tema" onclick="aplicarTemaDruida()">Druida</button>
+      <button class="botao-tema" onclick="aplicarTemaFeitiçaria()">Feitiçaria</button>
+      <button class="botao-tema" onclick="aplicarTemaCavaleiro()">Cavaleiro</button>
+      <button class="botao-tema" onclick="aplicarTemaProfundo()">Profundo</button>
+      <button class="botao-tema" onclick="aplicarTemaDraconico()">Draconico</button>
+    </footer>
+    
     <script src="js/menu.js">  </script>
     <!-- <script src="js/carregarJSONParaLocalStorage.js"></script> -->
     <script>
@@ -132,27 +138,35 @@
 
 
 
-    </script>
- <button class="botao-tema" onclick="aplicarTemaClaro()">Claro</button>
- <button class="botao-tema" onclick="aplicarTemaEscuro()">Escuro</button>
- <button class="botao-tema" onclick="aplicarTemaColorido()">Colorido</button>
+  </script>
   <script>
-  function aplicarTemaClaro() {
+  function aplicarTemaDruida() {
   document.documentElement.style.setProperty('--cor-fundo', '#0a3740');
   document.documentElement.style.setProperty('--cor-texto', '#ffffff');
   document.documentElement.style.setProperty('--cor-destaque', '#4CAF50');
+  localStorage.setItem('cores', '["#0a3740","#ffffff","#4CAF50"]')
   }
 
-  function aplicarTemaEscuro() {
+  function aplicarTemaFeitiçaria() {
   document.documentElement.style.setProperty('--cor-fundo', '#2f1335');
   document.documentElement.style.setProperty('--cor-texto', '#ffffff');
   document.documentElement.style.setProperty('--cor-destaque', '#ce3762');
   }
 
-  function aplicarTemaColorido() {
+  function aplicarTemaCavaleiro() {
   document.documentElement.style.setProperty('--cor-fundo', '#000000');
   document.documentElement.style.setProperty('--cor-texto', '#ffffff');
   document.documentElement.style.setProperty('--cor-destaque', '#ffb752');
+  }
+  function aplicarTemaProfundo() {
+  document.documentElement.style.setProperty('--cor-fundo', '#03223f');
+  document.documentElement.style.setProperty('--cor-texto', '#e19f41');
+  document.documentElement.style.setProperty('--cor-destaque', '#038bbb');
+  }
+  function aplicarTemaDraconico() {
+  document.documentElement.style.setProperty('--cor-fundo', '#5a3546');
+  document.documentElement.style.setProperty('--cor-texto', '#fa8d3b');
+  document.documentElement.style.setProperty('--cor-destaque', '#fc6747');
   }
 </script>
 

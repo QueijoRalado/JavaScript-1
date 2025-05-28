@@ -17,6 +17,14 @@ nav{
     border-bottom: 5px var(--cor-destaque) solid;
     
 }
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: space-evenly;
+    background-color: var(--cor-fundo);
+    border-top: 5px var(--cor-destaque) solid;
+}
 ul{
     display: flex;
     list-style: none;
@@ -62,7 +70,8 @@ a:hover, a:active{
     }
     .menu-icon {
         display: block;    
-    }    
+    }
+   
  }
  /* Mexendo com a página do mestre */
 
