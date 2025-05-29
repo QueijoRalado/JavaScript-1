@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mobile.css">
     <title>Ficha</title>
+    <style>
+      button{
+        justify-content: center;
+      }
+    </style>
 </head>
 <body class="body_players">
     <h1 class="leta_gande">PLAYERS ADICIONADOS:</h1>
     
+    <div class="butoes">
     <button>ADICIONAR PLAYERS</button>
     <button>EXCLUIR PLAYERS</button>
+  </div>
 
 
     <div id="id_caixas_de_escolha_players">
@@ -34,13 +41,23 @@
             coisax.setAttribute("class", `caixas_de_escolha_players`)
 
             coisax.innerHTML = `
-              <h3>${nome_personagem} (${nome_player})</h3>
-              <p><strong>Campanha:</strong> ${campanha}</p>
-              <p><strong>Raça:</strong> ${raca}</p>
-              <p><strong>Classe:</strong> ${classe}</p>
-              <p><strong>Vida:</strong> ${vida}</p>
-              <p><strong>Mana:</strong> ${mana}</p>
-              <p><strong>Descrição:</strong> ${descricao}</p>
+              <h2>${nome_personagem} (${nome_player})</h2>
+              <h3>CAMPANHA:</h3>
+              <p>${campanha}</p>
+              <h3>RAÇA:</h3>
+              <p>${raca}</p>
+              <h3>CLASSE:</h3>
+              <p>${classe}</p>
+              <h3>VIDA:</h3>
+              <p>${vida}</p>
+              <h3>MANA:</h3>
+              <p>${mana}</p>
+              <h3>DESCRIÇÃO:</h3>
+              <p>${descricao}</p>
+              <div class="butoes">
+                <button>EXCLUIR PERSONAGEM</button>
+                <button>EDITAR PERSONAGEM</button>
+            </div>
             `;
 
            caixas_de_escolha_players.appendChild(coisax);
