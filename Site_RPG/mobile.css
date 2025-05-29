@@ -4,8 +4,8 @@ body{
     background-repeat: repeat;
     height: 100%;
     margin: 0;
-    
-    font-family: 'Arvo', 'Crete Round', 'PT Serif', 'Volkhov', sans-serif
+    font-family: 'Arvo', 'Crete Round', 'PT Serif', 'Volkhov', sans-serif;
+    color: var(--cor-texto);
 }
 
 
@@ -13,16 +13,14 @@ nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: var(--cor-fundo);
+    
     border-bottom: 5px var(--cor-destaque) solid;
     
 }
 footer{
     display: flex;
     flex-wrap: wrap;
-    
     justify-content: space-evenly;
-    background-color: var(--cor-fundo);
     border-top: 5px var(--cor-destaque) solid;
 }
 ul{
@@ -32,6 +30,7 @@ ul{
     gap: 50px;
     font-size: x-large;
 }
+
 a{
     color: var(--cor-texto);
     text-decoration: none;
@@ -55,7 +54,7 @@ a:hover, a:active{
     .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #000000;
+        background-color: var(--cor-fundo);
         position: absolute;
         top: 60px;
         right: 0;
@@ -83,7 +82,6 @@ a:hover, a:active{
 .campanhas{
     display: flex;
     flex-direction: column;
-    
     text-decoration: underline;
 }
 .item1{
@@ -93,45 +91,46 @@ a:hover, a:active{
 }
 .campanhas .item2{
     display: flex;
-    flex-direction: column;
-    background-image: url(./imagens/foto_default_verde.webp);
-    
-    border: solid 5px rgba(0, 128, 0, 0.337);
+    flex-direction: column;    
+    border: solid 5px var(--cor-destaque);
     border-radius: 20px;
     margin: 20px;
     padding: 30px;
 }
 .campanhas .item2 button{
     width: 70px;
+    
+    
 }
 .tabela_de_personagens_campanha{
     display: flex;
     justify-content: center;
     width: 100%;
     border-collapse: collapse;
-
+    background-color: var(--cor-fundo);
 }
 .class_nome_da_campanha{
-    color: rgb(167, 211, 177);
+    color: var(--cor-texto);
 }
 .class_desc_da_campanha{
-    color: rgb(167, 211, 177);
+    color: var(--cor-texto);
 }
 .class_anuncio_de_players{
-    color: rgb(167, 211, 177);
+    color: var(--cor-texto);
 }
 .tabela_de_personagens_campanha tr, th, td{
-    color: rgb(167, 211, 177);
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
 }
 .cor_players{
-    color: rgb(186, 221, 184);
+    color: var(--cor-texto);
     text-decoration: none;
 }
 .cor_colunas{
-    color: rgb(4, 85, 1);
+    color: var(--cor-destaque);
 }
 .borda_imagem{
-    border: 3px solid rgb(186, 221, 184);
+    border: 3px solid var(--cor-destaque);
 }
 .class_img_da_campanha{
     text-align: center;
@@ -148,7 +147,7 @@ a:hover, a:active{
 }
 .leta_gande{
     font-size: 25px;
-    color: rgb(78, 168, 75);
+    color: var(--cor-texto);;
 }
 .leta_peqena{
     color: #066830;
@@ -171,6 +170,7 @@ h2{
     text-align: center;
     font-size: 25px;
     color: var(--cor-destaque);
+    /* color: rgb(236, 166, 166); */
 }
 h3{
     text-align: center;
@@ -192,5 +192,5 @@ th, td {
     border-collapse: collapse;
 }
 tr{
-    background-color: #108141;
+    background-color: var(--cor-destaque);;
 }

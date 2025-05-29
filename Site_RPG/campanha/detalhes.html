@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../mobile.css">
+    <script src="../js/tema.js "></script>
     <script>
         function carregarConteudoCampanha(){
             let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
@@ -39,17 +39,17 @@
 
         
     </script>
-    
+    <link rel="stylesheet" href="../mobile.css">
 </head>
 <body onload="carregarConteudoCampanha();">
     <nav>
-        <a href="../index.html" target="_self"><img src="../imagens/d20bonito_verde.png" alt="logo" class="dado20"></a>
+        <a href="../index.html" target="_self"><img src="../imagens/d20_bonito.png" alt="logo" class="dado20"></a>
         <ul class="nav-links">
             <li><a href="../campanha/index.html" target="_self">Mestre</a></li>
             <li><a href="#">Jogador</a></li>
         </ul>
         
-        <div class="menu-icon"><img class="grimoriobonito" src="../imagens/grimorio_bonito_verde.png" alt=""></div>
+        <div class="menu-icon"><img class="grimoriobonito" src="../imagens/grimorio_bonito.png" alt=""></div>
     </nav>
 
     <div class="class_img_da_campanha">
@@ -100,5 +100,6 @@
      
       
     </script>
+    
 </body>
 </html>
