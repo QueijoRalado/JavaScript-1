@@ -2,46 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../js/tema.js "></script>
-    <script>
-        function carregarConteudoCampanha(){
-            let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
-            document.title = campanha.nome;
-            document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
-            document.getElementById("desc_da_campanha").innerText = campanha.descricao;
-            document.getElementById("id_inicio").innerHTML = campanha.inicio
-            console.log(campanha.fim)
-            if(campanha.fim===null){
-                document.getElementById("id_fim").innerHTML = "Indefinido"
-            } else {
-                document.getElementById("id_fim").innerHTML = campanha.fim
-            }
-            document.getElementById("imagem_da_campanha").src = campanha.img
-            const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
-        const jogadores = campanha.jogadores;
-
-        jogadores.forEach(jogador => {
-          const nomePlayer = Object.keys(jogador)[0];
-          const [personagem, raca, classe] = jogador[nomePlayer];
-
-          const linha = document.createElement("tr");
-
-            linha.innerHTML = `
-            <th scope="row"><a href="#" class="cor_players">${nomePlayer}</a></th>
-            <td>${personagem}</td>
-            <td>${raca}</td>
-            <td>${classe}</td>
-            `;
-
-            tabela.appendChild(linha);
-        });
-        }
-
-        
-    </script>
     <link rel="stylesheet" href="../mobile.css">
 </head>
-<body onload="carregarConteudoCampanha();">
+<body>
     <nav>
         <a href="../index.html" target="_self"><img src="../imagens/d20_bonito.png" alt="logo" class="dado20"></a>
         <ul class="nav-links">
@@ -51,7 +14,14 @@
         
         <div class="menu-icon"><img class="grimoriobonito" src="../imagens/grimorio_bonito.png" alt=""></div>
     </nav>
-
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link pagina_atual" aria-current="page" href="#">Detalhes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sessões</a>
+        </li>
+      </ul>
     <div class="class_img_da_campanha">
     <img src="" alt="" class="borda_imagem" id="imagem_da_campanha">
 </div>
@@ -88,10 +58,16 @@
     <div style="text-align: center; margin-top: 30px;">
     <button>Adicionar Players</button>
     <button>Remover Players</button>
+    
 </div>
+    <script src="../js/tema.js "></script>
 
     <script>
-   const menuIcon = document.querySelector('.menu-icon');
+          document.addEventListener("DOMContentLoaded", function (event) {
+            console.log("DOM completamente carregado e analisado");
+            carregarConteudoCampanha();
+        });
+        const menuIcon = document.querySelector('.menu-icon');
         const navLinks = document.querySelector('.nav-links');
       
         menuIcon.addEventListener('click', () => {
@@ -99,7 +75,41 @@
         });
      
       
-    </script>
-    
+ 
+        function carregarConteudoCampanha(){
+             let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
+             document.title = campanha.nome;
+             document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
+             document.getElementById("desc_da_campanha").innerText = campanha.descricao;
+             document.getElementById("id_inicio").innerHTML = campanha.inicio
+             console.log(campanha.fim)
+             if(campanha.fim===null){
+                 document.getElementById("id_fim").innerHTML = "Indefinido"
+             } else {
+                 document.getElementById("id_fim").innerHTML = campanha.fim
+             }
+             document.getElementById("imagem_da_campanha").src = campanha.img
+             const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
+         const jogadores = campanha.jogadores;
+ 
+         jogadores.forEach(jogador => {
+           const nomePlayer = Object.keys(jogador)[0];
+           const [personagem, raca, classe] = jogador[nomePlayer];
+ 
+           const linha = document.createElement("tr");
+ 
+             linha.innerHTML = `
+             <th scope="row"><a href="#" class="cor_players">${nomePlayer}</a></th>
+             <td>${personagem}</td>
+             <td>${raca}</td>
+             <td>${classe}</td>
+             `;
+ 
+             tabela.appendChild(linha);
+         });
+         }
+ 
+         
+     </script>
 </body>
 </html>

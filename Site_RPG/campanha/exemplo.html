@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Render HTML do localStorage</title>
+</head>
+<body>
+
+<div id="render-area"></div>
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vScBr1WHQq2oNBiGCfEqAcj3Ncyt518ZfUXCJdgIanSRIRWG8myKl-cVKkQRg2i6ZdpNRcO01VCPKOT/pub?embedded=true"></iframe>
+<script>
+// Simulando o armazenamento no localStorage
+localStorage.setItem("html", '<p>This is a <b>default</b> toolbar demo of <mark>Rich text editor</mark>.</p><p><img src="../imagens/d20bonito_verde.png" />sdgsadged</p>');
+
+// Recupera e renderiza o conteúdo
+const htmlContent = localStorage.getItem("html");
+document.getElementById("render-area").innerHTML = htmlContent;
+</script>
+
+</body>
+</html>

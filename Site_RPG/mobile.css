@@ -107,24 +107,23 @@ a:hover, a:active{
     justify-content: center;
     width: 100%;
     border-collapse: collapse;
+    border-color: var(--cor-destaque);
     background-color: var(--cor-fundo);
 }
 .class_nome_da_campanha{
-    color: var(--cor-texto);
+    
 }
 .class_desc_da_campanha{
-    color: var(--cor-texto);
+    
 }
 .class_anuncio_de_players{
-    color: var(--cor-texto);
+    
 }
 .tabela_de_personagens_campanha tr, th, td{
-    color: var(--cor-texto);
-    background-color: var(--cor-fundo);
 }
 .cor_players{
-    color: var(--cor-texto);
-    text-decoration: none;
+    
+    
 }
 .cor_colunas{
     color: var(--cor-destaque);
@@ -147,15 +146,15 @@ a:hover, a:active{
 }
 .leta_gande{
     font-size: 25px;
-    color: var(--cor-texto);;
+    color: var(--cor-destaque);
 }
 .leta_peqena{
-    color: #066830;
+    color: var(--cor-texto);
 }
 .caixa_dos_players{
     border: solid 10px;
     border-radius: 5px;
-    border-color: rgb(118, 48, 143);
+    border-color: var(--cor-destaque);
 }
 .body_players{
     padding-left: 120px;
@@ -190,7 +189,10 @@ th, td {
     font-size: 1.1em;
     text-align: center;
     border-collapse: collapse;
+    border: 2px solid;
+    border-color: var(--cor-destaque);
 }
 tr{
-    background-color: var(--cor-destaque);;
+    border: 2px solid;
+    border-color: var(--cor-destaque);
 }

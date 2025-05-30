@@ -1,6 +1,6 @@
   // Salva o tema padrão se não existir
   if (!localStorage.getItem("tema")) {
-    localStorage.setItem("tema", "Feitiçaria");
+    localStorage.setItem("tema", "Feiticaria");
   }
 
   // Função para aplicar o tema pelo nome
