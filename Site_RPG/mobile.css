@@ -1,4 +1,4 @@
-/* O Geral */
+/* Geral das páginas, ademais a principal */
 body{
     background-color: var(--cor-fundo);
     background-repeat: repeat;
@@ -7,15 +7,11 @@ body{
     font-family: 'Arvo', 'Crete Round', 'PT Serif', 'Volkhov', sans-serif;
     color: var(--cor-texto);
 }
-
-
 nav{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
     border-bottom: 5px var(--cor-destaque) solid;
-    
 }
 footer{
     display: flex;
@@ -30,13 +26,11 @@ ul{
     gap: 50px;
     font-size: x-large;
 }
-
 a{
     color: var(--cor-texto);
     text-decoration: none;
     transition: color 0.3s;
 }
-
 a:hover, a:active{
     color: var(--cor-destaque);
 }
@@ -48,8 +42,11 @@ a:hover, a:active{
     width: 70px;
     margin-left: 30px;
 }
+.pagina_atual{
+    text-decoration: underline rgba(255, 255, 255, 0.806);
+}
 
-/* estamos mexendo com o hamburguinho (menu) */
+/* Menu do mobile (click no grimório) */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -70,26 +67,19 @@ a:hover, a:active{
     .menu-icon {
         display: block;    
     }
-   
- }
- /* Mexendo com a página do mestre */
-
-.pagina_atual{
-    text-decoration: underline rgba(255, 255, 255, 0.806);
 }
-
-
+/* Página principal do mestre onde é mostrado as campanhas */
+.titulo_campanhas{
+    text-align: center;
+    text-decoration: underline;
+}
 .campanhas{
     display: flex;
     flex-direction: column;
     text-decoration: underline;
+    color: var(--cor-destaque);
 }
-.item1{
-    text-align: center;
-    
-    text-decoration: underline;
-}
-.campanhas .item2{
+.campanhas .container_campanha{
     display: flex;
     flex-direction: column;    
     border: solid 5px var(--cor-destaque);
@@ -97,10 +87,16 @@ a:hover, a:active{
     margin: 20px;
     padding: 30px;
 }
-.campanhas .item2 button{
+.campanhas .container_campanha button{
     width: 70px;
-    
-    
+}
+/* Página individual das campanhas */
+.class_img_da_campanha{
+    text-align: center;
+    margin-top: 50px;
+}
+.borda_img_da_campanha{
+    border: 3px solid var(--cor-destaque);
 }
 .tabela_de_personagens_campanha{
     display: flex;
@@ -111,31 +107,13 @@ a:hover, a:active{
     background-color: var(--cor-fundo);
 }
 .class_nome_da_campanha{
-    
+    color: var(--cor-destaque);
+    font-size: 40px;
 }
 .class_desc_da_campanha{
-    
+    color: var(--cor-texto);
 }
-.class_anuncio_de_players{
-    
-}
-.tabela_de_personagens_campanha tr, th, td{
-}
-.cor_players{
-    
-    
-}
-.cor_colunas{
-    color: var(--cor-destaque);
-}
-.borda_imagem{
-    border: 3px solid var(--cor-destaque);
-}
-.class_img_da_campanha{
-    text-align: center;
-    margin-top: 50px;
-}
-.artigos{
+.inicio_fim{
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -144,22 +122,31 @@ a:hover, a:active{
     flex-direction: row;
     gap: 75px;
 }
-.leta_gande{
-    font-size: 25px;
+.class_anuncio_de_players{
     color: var(--cor-destaque);
 }
-.leta_peqena{
+.cor_colunas_tabela_de_players{
+    color: var(--cor-destaque);
+}
+.letra_grande{
+    font-size:30px;
+    color: var(--cor-destaque);
+}
+.letra_pequena{
+    font-size: 22px;
     color: var(--cor-texto);
 }
 .caixa_dos_players{
     border: solid 10px;
     border-radius: 5px;
     border-color: var(--cor-destaque);
+    margin-bottom: 30px;
 }
 .body_players{
     padding-left: 120px;
     padding-right: 120px;
 }
+/*Aqui atribuimos características gerais aos elementos*/
 h1{
     text-align: center;
     font-size: 40px;
@@ -169,7 +156,6 @@ h2{
     text-align: center;
     font-size: 25px;
     color: var(--cor-destaque);
-    /* color: rgb(236, 166, 166); */
 }
 h3{
     text-align: center;
