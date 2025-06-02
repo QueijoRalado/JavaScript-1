@@ -23,7 +23,7 @@
         </li>
       </ul>
     <div class="class_img_da_campanha">
-    <img src="" alt="" class="borda_imagem" id="imagem_da_campanha">
+    <img src="" alt="" class="borda_img_da_campanha" id="imagem_da_campanha">
 </div>
     <h2 class="class_nome_da_campanha" id="nome_da_campanha"></h2>
 
@@ -47,10 +47,10 @@
         <table class="tabela_de_personagens_campanha" id="id_tabela_de_personagens_campanha">
         <thead>
             <tr>
-                <th scope="col" class="cor_colunas">Nome do Player</th>
-                <th scope="col" class="cor_colunas">Nome do Personagem</th>
-                <th scope="col" class="cor_colunas">Raça</th>
-                <th scope="col" class="cor_colunas">Classe</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Nome do Player</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Nome do Personagem</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Raça</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Classe</th>
             </tr>
         </thead>
     </table>
@@ -93,13 +93,13 @@
          const jogadores = campanha.jogadores;
  
          jogadores.forEach(jogador => {
-           const nomePlayer = Object.keys(jogador)[0];
-           const [personagem, raca, classe] = jogador[nomePlayer];
+           const nome_player = Object.keys(jogador)[0];
+           const [personagem, raca, classe] = jogador[nome_player];
  
            const linha = document.createElement("tr");
  
              linha.innerHTML = `
-             <th scope="row" class="cor_players">${nomePlayer}</th>
+             <th scope="row">${nome_player}</th>
              <td>${personagem}</td>
              <td>${raca}</td>
              <td>${classe}</td>

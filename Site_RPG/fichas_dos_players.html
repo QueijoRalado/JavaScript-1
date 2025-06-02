@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mobile.css">
+    <title>Ficha</title>
+    <style>
+      button{
+        justify-content: center;
+      }
+    </style>
+</head>
+<body class="body_players">
+    <h1 class="leta_gande">PLAYERS ADICIONADOS:</h1>
+    
+    <div class="butoes">
+    <button>ADICIONAR PLAYERS</button>
+    <button>EXCLUIR PLAYERS</button>
+  </div>
+
+
+    <div id="id_caixas_de_escolha_players">
+    </div>
+
+    <script>
+      fetch('fichas_dos_players.json')
+      .then(res => res.json())
+      .then(dados => {
+        const caixas_de_escolha_players = document.getElementById("id_caixas_de_escolha_players");
+
+        dados.forEach(player => {
+          const nome_player = Object.keys(player)[0];
+          const personagens = player[nome_player];
+
+          personagens.forEach(personagem => {
+            const nome_personagem = Object.keys(personagem)[0];
+            const [campanha, raca, classe, vida, mana, descricao] = personagem[nome_personagem];
+
+            const coisax = document.createElement("div");
+            coisax.setAttribute("class", `caixas_de_escolha_players`)
+
+            coisax.innerHTML = `
+              <h2>${nome_personagem} (${nome_player})</h2>
+              <h3>CAMPANHA:</h3>
+              <p>${campanha}</p>
+              <h3>RAÇA:</h3>
+              <p>${raca}</p>
+              <h3>CLASSE:</h3>
+              <p>${classe}</p>
+              <h3>VIDA:</h3>
+              <p>${vida}</p>
+              <h3>MANA:</h3>
+              <p>${mana}</p>
+              <h3>DESCRIÇÃO:</h3>
+              <p>${descricao}</p>
+              <div class="butoes">
+                <button>EXCLUIR PERSONAGEM</button>
+                <button>EDITAR PERSONAGEM</button>
+            </div>
+            `;
+
+           caixas_de_escolha_players.appendChild(coisax);
+          });
+        });
+      })
+      .catch(erro => {
+        console.error("Erro ao carregar JSON:", erro);
+      });
+    </script>
+</body>
+</html>
