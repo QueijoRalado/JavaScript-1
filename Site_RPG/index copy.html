@@ -92,7 +92,7 @@
     </main>
     <footer>
       <button class="botao-tema" onclick="aplicarTemaDruida()">Druida</button>
-      <button class="botao-tema" onclick="aplicarTemaFeiticaria()">Feitiçaria</button>
+      <button class="botao-tema" onclick="aplicarTemaFeitiçaria()">Feitiçaria</button>
       <button class="botao-tema" onclick="aplicarTemaCavaleiro()">Cavaleiro</button>
       <button class="botao-tema" onclick="aplicarTemaProfundo()">Profundo</button>
       <button class="botao-tema" onclick="aplicarTemaDraconico()">Draconico</button>
@@ -139,7 +139,51 @@
 
 
   </script>
-  <script src="js/tema.js"></script>  
+  <script>
+    if(localStorage.getItem("tema")){
+
+    }else{
+      localStorage.setItem("tema", "aplicarTemaFeitiçaria()");
+    }
+    carregarTema();
+  
+  function carregarTema(){
+    localStorage.getItem("tema");
+  }
+ 
+  function aplicarTemaDruida() {
+  document.documentElement.style.setProperty('--cor-fundo', '#0a3740');
+  document.documentElement.style.setProperty('--cor-texto', 'rgb(146, 232, 159)');
+  document.documentElement.style.setProperty('--cor-destaque', '#4CAF50');
+  localStorage.setItem('cores', '["#0a3740","#ffffff","#4CAF50"]')
+  localStorage.setItem("tema", "aplicarTemaDruida()");
+  }
+
+  function aplicarTemaFeitiçaria() {
+  document.documentElement.style.setProperty('--cor-fundo', '#2f1335');
+  document.documentElement.style.setProperty('--cor-texto', '#ffffff');
+  document.documentElement.style.setProperty('--cor-destaque', '#ce3762');
+  localStorage.setItem("tema", "aplicarTemaFeitiçaria()");
+  }
+
+  function aplicarTemaCavaleiro() {
+  document.documentElement.style.setProperty('--cor-fundo', '#000000');
+  document.documentElement.style.setProperty('--cor-texto', '#ffffff');
+  document.documentElement.style.setProperty('--cor-destaque', '#ffb752');
+  }
+  function aplicarTemaProfundo() {
+  document.documentElement.style.setProperty('--cor-fundo', '#03223f');
+  document.documentElement.style.setProperty('--cor-texto', '#e19f41');
+  document.documentElement.style.setProperty('--cor-destaque', '#038bbb');
+  localStorage.setItem("tema", "aplicarTemaProfundo()");
+
+  }
+  function aplicarTemaDraconico() {
+  document.documentElement.style.setProperty('--cor-fundo', '#5a3546');
+  document.documentElement.style.setProperty('--cor-texto', 'rgb(193, 130, 130)');
+  document.documentElement.style.setProperty('--cor-destaque', '#fc6747');
+  localStorage.setItem("tema", "aplicarTemaDraconico()");
+  }
 </script>
 
 </body>

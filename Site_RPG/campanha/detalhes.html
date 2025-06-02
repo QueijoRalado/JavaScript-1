@@ -1,0 +1,115 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../mobile.css">
+</head>
+<body>
+    <nav>
+        <a href="../index.html" target="_self"><img src="../imagens/d20_bonito.png" alt="logo" class="dado20"></a>
+        <ul class="nav-links">
+            <li><a href="../campanha/index.html" target="_self">Mestre</a></li>
+            <li><a href="#">Jogador</a></li>
+        </ul>
+        
+        <div class="menu-icon"><img class="grimoriobonito" src="../imagens/grimorio_bonito.png" alt=""></div>
+    </nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link pagina_atual" aria-current="page" href="#">Detalhes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sessões</a>
+        </li>
+      </ul>
+    <div class="class_img_da_campanha">
+    <img src="" alt="" class="borda_img_da_campanha" id="imagem_da_campanha">
+</div>
+    <h2 class="class_nome_da_campanha" id="nome_da_campanha"></h2>
+
+    <h3 class="class_desc_da_campanha" id="desc_da_campanha"></h3>
+
+    <div>
+    <article class="inicio_fim">
+        <section>
+            <h3 class="letra_grande">INÍCIO</h3>
+            <h2 class="letra_pequena" id="id_inicio"></h2>
+        </section>
+        <section>
+            <h3 class="letra_grande">FIM</h3>
+            <h2 class="letra_pequena" id="id_fim"></h2>
+        </section>
+    </article>
+</div>
+
+    <p class="class_anuncio_de_players">PLAYERS NA CAMPANHA:</p>
+ 
+        <table class="tabela_de_personagens_campanha" id="id_tabela_de_personagens_campanha">
+        <thead>
+            <tr>
+                <th scope="col" class="cor_colunas_tabela_de_players">Nome do Player</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Nome do Personagem</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Raça</th>
+                <th scope="col" class="cor_colunas_tabela_de_players">Classe</th>
+            </tr>
+        </thead>
+    </table>
+    
+    <div style="text-align: center; margin-top: 30px;">
+    <button>Adicionar Players</button>
+    <button>Remover Players</button>
+    
+</div>
+    <script src="../js/tema.js "></script>
+
+    <script>
+          document.addEventListener("DOMContentLoaded", function (event) {
+            console.log("DOM completamente carregado e analisado");
+            carregarConteudoCampanha();
+        });
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+      
+        menuIcon.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+     
+      
+ 
+        function carregarConteudoCampanha(){
+             let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
+             document.title = campanha.nome;
+             document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
+             document.getElementById("desc_da_campanha").innerText = campanha.descricao;
+             document.getElementById("id_inicio").innerHTML = campanha.inicio
+             console.log(campanha.fim)
+             if(campanha.fim===null){
+                 document.getElementById("id_fim").innerHTML = "Indefinido"
+             } else {
+                 document.getElementById("id_fim").innerHTML = campanha.fim
+             }
+             document.getElementById("imagem_da_campanha").src = campanha.img
+             const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
+         const jogadores = campanha.jogadores;
+ 
+         jogadores.forEach(jogador => {
+           const nome_player = Object.keys(jogador)[0];
+           const [personagem, raca, classe] = jogador[nome_player];
+ 
+           const linha = document.createElement("tr");
+ 
+             linha.innerHTML = `
+             <th scope="row">${nome_player}</th>
+             <td>${personagem}</td>
+             <td>${raca}</td>
+             <td>${classe}</td>
+             `;
+ 
+             tabela.appendChild(linha);
+         });
+         }
+ 
+         
+     </script>
+</body>
+</html>

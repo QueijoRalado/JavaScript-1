@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Personagens</title>
+  <link rel="stylesheet" href="../mobile.css">
+</head>
+<body class="body_players">
+
+  <h1>Personagens</h1>
+  <div id="caixa_personagens"></div>
+
+  <script>
+    fetch('../dados/jogadores.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("caixa_personagens");
+
+        data.forEach(pessoa => {
+          const nome_player = Object.keys(pessoa)[0];
+          const personagens = pessoa[nome_player];
+
+          personagens.forEach(personagem => {
+            const nome_personagem = Object.keys(personagem)[0];
+            const [
+              campanha, raca, classe, vida, mana, descricao
+            ] = personagem[nome_personagem];
+
+            const coisax = document.createElement("div");
+            coisax.classList.add("caixa_dos_players");
+
+            coisax.innerHTML = `
+              <h3>${nome_personagem} (${nome_player})</h3>
+              <p><strong>Campanha:</strong> ${campanha}</p>
+              <p><strong>Raça:</strong> ${raca}</p>
+              <p><strong>Classe:</strong> ${classe}</p>
+              <p><strong>Vida:</strong> ${vida}</p>
+              <p><strong>Mana:</strong> ${mana}</p>
+              <p><strong>Descrição:</strong> ${descricao}</p>
+            `;
+
+            container.appendChild(coisax);
+          });
+        });
+      })
+      .catch(erro => {
+        console.error("Erro ao carregar JSON:", erro);
+      });
+  </script>
+
+<script src="../js/tema.js "></script>
+</body>
+</html>
