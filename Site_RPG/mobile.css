@@ -1,4 +1,5 @@
-/* O Geral */
+/* --- Esse é o body das páginas. As cores são definidas aqui --- */
+
 body{
     background-color: var(--cor-fundo);
     background-repeat: repeat;
@@ -8,20 +9,12 @@ body{
     color: var(--cor-texto);
 }
 
-
+/* --- Toda essa parte engloba o nosso menu --- */
 nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    
     border-bottom: 5px var(--cor-destaque) solid;
-    
-}
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    border-top: 5px var(--cor-destaque) solid;
 }
 ul{
     display: flex;
@@ -30,26 +23,15 @@ ul{
     gap: 50px;
     font-size: x-large;
 }
-
-a{
-    color: var(--cor-texto);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-a:hover, a:active{
-    color: var(--cor-destaque);
-}
 .dado20{
     width: 70px;
-    
 }
 .grimoriobonito{
     width: 70px;
     margin-left: 30px;
 }
 
-/* estamos mexendo com o hamburguinho (menu) */
+/* Essa parte serve para o menu mobile (funciona ao clicar no grimório) */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -72,24 +54,19 @@ a:hover, a:active{
     }
    
  }
- /* Mexendo com a página do mestre */
 
-.pagina_atual{
-    text-decoration: underline rgba(255, 255, 255, 0.806);
+/* --- Aqui, nós mexemos com a página de campanhas ---*/
+
+.anunciante_campanhas{
+    text-align: center;
+    text-decoration: underline;
 }
-
-
 .campanhas{
     display: flex;
     flex-direction: column;
-    text-decoration: underline;
+    text-decoration: underline var(--cor-destaque);
 }
-.item1{
-    text-align: center;
-    
-    text-decoration: underline;
-}
-.campanhas .item2{
+.campanhas .caixa_da_campanha{
     display: flex;
     flex-direction: column;    
     border: solid 5px var(--cor-destaque);
@@ -97,10 +74,47 @@ a:hover, a:active{
     margin: 20px;
     padding: 30px;
 }
-.campanhas .item2 button{
+.campanhas .caixa_da_campanha button{
     width: 70px;
-    
-    
+}
+
+/* --- Aqui temos a campanha individual, onde mostramos o título, a descrição, o ínico, o fim, e os players que participam da campanha tudo na mesma página --- */
+
+/* Imagem da Campanha */
+
+.borda_imagem{
+    border: 3px solid var(--cor-destaque);
+}
+.class_img_da_campanha{
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Informações Gerais da Campanha */
+
+.class_nome_da_campanha{
+    font-size: 40px;
+    color: var(--cor-destaque);
+}
+.class_desc_da_campanha{
+    color: var(--cor-texto);
+}
+.inicio_fim{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 75px;
+}
+
+/* --- Tabela de Players --- */
+
+.class_anuncio_de_players{
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--cor-destaque);
 }
 .tabela_de_personagens_campanha{
     display: flex;
@@ -110,55 +124,29 @@ a:hover, a:active{
     border-color: var(--cor-destaque);
     background-color: var(--cor-fundo);
 }
-.class_nome_da_campanha{
-    
-}
-.class_desc_da_campanha{
-    
-}
-.class_anuncio_de_players{
-    
-}
-.tabela_de_personagens_campanha tr, th, td{
-}
-.cor_players{
-    
-    
-}
 .cor_colunas{
     color: var(--cor-destaque);
 }
-.borda_imagem{
-    border: 3px solid var(--cor-destaque);
-}
-.class_img_da_campanha{
+th, td {
+    word-wrap: break-word;
+    white-space: normal;
+    vertical-align: middle;
+    font-size: 1.1em;
     text-align: center;
-    margin-top: 50px;
-}
-.artigos{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 75px;
-}
-.leta_gande{
-    font-size: 25px;
-    color: var(--cor-destaque);
-}
-.leta_peqena{
-    color: var(--cor-texto);
+    border-collapse: collapse;
+    border: 2px solid;
+    border-color: var(--cor-destaque);
 }
 .caixa_dos_players{
     border: solid 10px;
     border-radius: 5px;
     border-color: var(--cor-destaque);
 }
-.body_players{
-    padding-left: 120px;
-    padding-right: 120px;
+
+/* --- Classes Gerais e Funcionalidades Adicionais --- */
+
+.pagina_atual{
+    text-decoration: underline rgba(255, 255, 255, 0.806);
 }
 h1{
     text-align: center;
@@ -169,7 +157,6 @@ h2{
     text-align: center;
     font-size: 25px;
     color: var(--cor-destaque);
-    /* color: rgb(236, 166, 166); */
 }
 h3{
     text-align: center;
@@ -182,17 +169,24 @@ p{
     margin: 20px;
     color: var(--cor-texto);
 }
-th, td {
-    word-wrap: break-word;
-    white-space: normal;
-    vertical-align: middle;
-    font-size: 1.1em;
-    text-align: center;
-    border-collapse: collapse;
-    border: 2px solid;
-    border-color: var(--cor-destaque);
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-top: 5px var(--cor-destaque) solid;
 }
-tr{
-    border: 2px solid;
-    border-color: var(--cor-destaque);
+a{
+    color: var(--cor-texto);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover, a:active{
+    color: var(--cor-destaque);
+}
+.letra_grande{
+    font-size: 30px;
+    color: var(--cor-destaque);
+}
+.letra_pequena{
+    color: var(--cor-texto);
 }
