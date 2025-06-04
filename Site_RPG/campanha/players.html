@@ -16,6 +16,8 @@
       .then(data => {
         const container = document.getElementById("caixa_personagens");
 
+        localStorage.setItem("jogadores", JSON.stringify(data));
+
         data.forEach(pessoa => {
           const nome_player = Object.keys(pessoa)[0];
           const personagens = pessoa[nome_player];

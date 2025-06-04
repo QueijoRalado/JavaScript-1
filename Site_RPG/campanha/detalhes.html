@@ -78,37 +78,44 @@
  
         function carregarConteudoCampanha(){
              let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
+             let jogadores = JSON.parse(localStorage.getItem("jogadores"))
              document.title = campanha.nome;
              document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
+             let nome_da_campanha = document.getElementById("nome_da_campanha").innerText
              document.getElementById("desc_da_campanha").innerText = campanha.descricao;
              document.getElementById("id_inicio").innerHTML = campanha.inicio
-             console.log(campanha.fim)
-             if(campanha.fim===null){
+             if(campanha.fim===""){
                  document.getElementById("id_fim").innerHTML = "Indefinido"
              } else {
                  document.getElementById("id_fim").innerHTML = campanha.fim
              }
              document.getElementById("imagem_da_campanha").src = campanha.img
              const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
-         const jogadores = campanha.jogadores;
- 
+             
          jogadores.forEach(jogador => {
-           const nome_player = Object.keys(jogador)[0];
-           const [personagem, raca, classe] = jogador[nome_player];
+            const nome_player = Object.keys(jogador)[0];
+            console.log(nome_player)
+            const personagens = jogador[nome_player];
+
+            personagens.forEach(personagem => {
+                console.log(personagem)
+                const nome_personagem = Object.keys(personagem)[0];
+                const [campanha, raca, classe, vida, mana, descricao] = personagem[nome_personagem];
+                if(nome_da_campanha===campanha.toUpperCase()){
+                    const linha = document.createElement("tr");
  
-           const linha = document.createElement("tr");
+                    linha.innerHTML = `
+                    <th scope="row">${nome_player}</th>
+                    <td>${nome_personagem}</td>
+                    <td>${raca}</td>
+                    <td>${classe}</td>
+                    `;
  
-             linha.innerHTML = `
-             <th scope="row">${nome_player}</th>
-             <td>${personagem}</td>
-             <td>${raca}</td>
-             <td>${classe}</td>
-             `;
- 
-             tabela.appendChild(linha);
+                tabela.appendChild(linha);
+                }
+            })
          });
          }
- 
          
      </script>
 </body>

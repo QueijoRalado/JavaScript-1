@@ -50,7 +50,8 @@
         <input autocomplete="off" type="text" id="nome" placeholder="Nome da campanha" required>
         <textarea id="descricao" name="descricaoEditar" placeholder="Descrição"  rows="4" cols="50" required></textarea>
         
-        <input type="date" id="dataInicio" placeholder="Data de Início" required>
+        <input type="date" id="inicio" placeholder="Data de Início" required>
+        <input type="date" id="fim" placeholder="Data de Finalização">
         
 
         <button type="submit">Adicionar Campanha</button>
@@ -69,11 +70,11 @@
 
             const nome = document.getElementById("nome").value;
             const descricao = document.getElementById("descricao").value;
-            const dataInicio = document.getElementById("dataInicio").value;
-            const dataFim = null
+            const inicio = document.getElementById("inicio").value;
+            const fim = document.getElementById("fim").value
 
             // Verifica se todos os campos estão preenchidos
-            if (!nome || !descricao || !dataInicio) {
+            if (!nome || !descricao || !inicio) {
                 alert("Por favor, preencha todos os campos!");
                 return;
             }
@@ -82,8 +83,8 @@
             const novaCampanha = {
                 nome,
                 descricao,
-                dataInicio,
-                dataFim
+                inicio,
+                fim
             };
 
             // Carrega as campanhas existentes ou cria uma lista vazia
