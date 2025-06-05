@@ -47,10 +47,11 @@
     </div>
     
     <form id="formCampanha">
-        <input autocomplete="off" type="text" id="nome" placeholder="Nome da campanha" required>
+        <input autocomplete="off" type="text" id="nome" placeholder="Nome da Campanha" required>
+        <input type="text" id="imagem" placeholder="Imagem da Campanha (url)">
         <textarea id="descricao" name="descricaoEditar" placeholder="Descrição"  rows="4" cols="50" required></textarea>
         
-        <input type="date" id="inicio" placeholder="Data de Início" required>
+        <input type="date" id="inicio" placeholder="Data de Início">
         <input type="date" id="fim" placeholder="Data de Finalização">
         
 
@@ -69,12 +70,13 @@
             event.preventDefault(); // Evita o envio do formulário e recarregamento da página
 
             const nome = document.getElementById("nome").value;
+            const img = document.getElementById("imagem").value
             const descricao = document.getElementById("descricao").value;
             const inicio = document.getElementById("inicio").value;
             const fim = document.getElementById("fim").value
 
             // Verifica se todos os campos estão preenchidos
-            if (!nome || !descricao || !inicio) {
+            if (!nome || !descricao) {
                 alert("Por favor, preencha todos os campos!");
                 return;
             }
@@ -82,6 +84,7 @@
 
             const novaCampanha = {
                 nome,
+                img,
                 descricao,
                 inicio,
                 fim

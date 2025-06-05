@@ -37,22 +37,23 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modalEditarCampanhaLabel">Editando</h1>
+            <h1 class="modal-title fs-5" id="modalEditarCampanhaLabel">Editando Campanha...</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Editar campanha com ID: <span id="campanhaId"></span></p>
+                <p><span id="campanhaId"></span></p>
                 <form id="formEditarCampanha">
+                    <input type="text" id="imagemEditar" placeholder="Imagem da campanha (url)" >
                     <input type="text" id="nomeEditar" placeholder="Nome da campanha" required>
-                    <!-- <input type="text" id="descricaoEditar" rows="4" cols="50" required> -->
                     <textarea id="descricaoEditar" name="descricaoEditar" placeholder="Descrição"  rows="4" cols="50" required></textarea>
-                    <input type="date" id="dataInicioEditar" placeholder="Data de Início" required>
+                    <input type="date" id="dataInicioEditar">
+                    <input type="date" id="dataFimEditar">
                     
                 </form>                
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="salvarAlteracoes">SALVAR</button>
+            <button type="button" class="btn btn-primary" id="salvarAlteracoes">Salvar</button>
             </div>
         </div>
         </div>
@@ -71,7 +72,6 @@
         
     }
     //parseInt(a.match(/\d+/)[0]);
-    
 
     function adicionarElementoCampanha(campanha, pos) {      
         const container = document.getElementById("campanhas");
@@ -83,7 +83,7 @@
 
         // Adicionar conteúdo à campanha
         // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarCampanha">Editar via Target</button>
-        sectionCampanha.innerHTML = `<a onclick="abirCampanha(${pos})" href="#">
+        sectionCampanha.innerHTML = `<a onclick="abrirCampanha(${pos})" href="#">
             <h3>${campanha.nome}</h3>
             <p>${campanha.descricao}</p></a>
             <button type="button" class="btn btn-primary" onclick="editarCampanha(${pos})" >Editar</button>        
@@ -116,7 +116,9 @@
           
             document.getElementById('nomeEditar').value = campanha.nome;
             document.getElementById('descricaoEditar').value = campanha.descricao;
-            document.getElementById('dataInicioEditar').value = campanha.dataInicio;
+            document.getElementById('dataInicioEditar').value = campanha.inicio;
+            document.getElementById('dataFimEditar').value = campanha.fim
+            document.getElementById('imagemEditar').value = campanha.img
             
 
 
@@ -127,14 +129,17 @@
                         // Pega os dados do formulário
                         const nome = document.getElementById('nomeEditar').value;
                         const descricao = document.getElementById('descricaoEditar').value;
-                        const dataInicio = document.getElementById('dataInicioEditar').value;
+                        const inicio = document.getElementById('dataInicioEditar').value;
+                        const fim = document.getElementById('dataFimEditar').value
+                        const img = document.getElementById('imagemEditar').value
                         
 
                         // Atualiza os dados da campanha no array de campanhas
                         campanha.nome = nome;
                         campanha.descricao = descricao;
-                        campanha.dataInicio = dataInicio;
-                        campanha.dataFim = null;
+                        campanha.inicio = inicio;
+                        campanha.fim = fim;
+                        campanha.img = img
 
                         // Atualiza o localStorage com as campanhas modificadas
                         const index = campanhas.findIndex(c => c.id === idCampanha);
@@ -151,7 +156,7 @@
                     };
 
         }
-        function abirCampanha(idCampanha){
+        function abrirCampanha(idCampanha){
             let campanha = campanhas[idCampanha];
             localStorage.setItem('campanha_selecionada', JSON.stringify(campanha));
             window.location.href = "./detalhes.html";

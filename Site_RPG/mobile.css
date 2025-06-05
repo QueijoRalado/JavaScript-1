@@ -84,8 +84,9 @@ ul{
 
 /* Imagem da Campanha */
 
-.borda_imagem{
+.borda_img_da_campanha{
     border: 3px solid var(--cor-destaque);
+    width: 200px;
 }
 .class_img_da_campanha{
     text-align: center;
@@ -192,4 +193,7 @@ a:hover, a:active{
 }
 .letra_pequena{
     color: var(--cor-texto);
+}
+.cores_modal{
+    background-color: var(--cor-fundo);
 }

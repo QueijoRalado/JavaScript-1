@@ -73,8 +73,6 @@
         menuIcon.addEventListener('click', () => {
           navLinks.classList.toggle('active');
         });
-     
-      
  
         function carregarConteudoCampanha(){
              let campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
@@ -83,13 +81,23 @@
              document.getElementById("nome_da_campanha").innerText = campanha.nome.toUpperCase();
              let nome_da_campanha = document.getElementById("nome_da_campanha").innerText
              document.getElementById("desc_da_campanha").innerText = campanha.descricao;
-             document.getElementById("id_inicio").innerHTML = campanha.inicio
+             if(campanha.inicio===""){
+                 document.getElementById("id_inicio").innerHTML = "Indefinido"
+             } else {
+                 document.getElementById("id_inicio").innerHTML = campanha.inicio
+             }
+
              if(campanha.fim===""){
                  document.getElementById("id_fim").innerHTML = "Indefinido"
              } else {
                  document.getElementById("id_fim").innerHTML = campanha.fim
              }
-             document.getElementById("imagem_da_campanha").src = campanha.img
+
+             if(campanha.img===""){
+                document.getElementById("imagem_da_campanha").src = "../imagens/espadalegau.webp"
+             } else {
+                document.getElementById("imagem_da_campanha").src = campanha.img
+             }
              const tabela = document.querySelector("#id_tabela_de_personagens_campanha thead");
              
          jogadores.forEach(jogador => {
