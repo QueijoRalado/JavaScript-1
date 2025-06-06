@@ -86,7 +86,6 @@ ul{
 
 .borda_img_da_campanha{
     border: 3px solid var(--cor-destaque);
-    width: 200px;
 }
 .class_img_da_campanha{
     text-align: center;
@@ -148,6 +147,22 @@ th, td {
     justify-content: center;
     color: #108141;
     margin-bottom: 20px;
+}
+
+/* --- Seção das Sessões (quase rimou) --- */
+
+.cenas_descricao{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 250px;
+}
+.borda_cenas_descricao{
+    border: 5px solid var(--cor-destaque);
+    padding: 10px;
 }
 
 /* --- Classes Gerais e Funcionalidades Adicionais --- */
