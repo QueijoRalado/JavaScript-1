@@ -1,0 +1,33 @@
+{
+    "BREAKING_BAD": {
+        "SESSAO_0": [
+            "os players são convocados a comer merda",
+            "os players vão atrás da merda",
+            "os players acham a merda, comem a merda e morrem"
+        ],
+        "SESSAO_1": [
+            "os players voltam dos mortos, sendo revividos por um antigo elfo maluco, ansiando por mais merda",
+            "os players morrem ao tocarem a luz do sol e são mortos... novamente"
+        ]
+    },
+    "MULTIVERSO_DA_LOUCURA":{
+        "SESSAO_0": [
+            "os players são convocados pelo rei da torta para comerem torta",
+            "não tem torta... :(",
+            "os players saem para comprar uma bela torta",
+            "eles não tem dinheiro o suficiente...!!!!!",
+            "eles deliberadamente matam uma inocente velha passando pela rua, roubando seu corpo",
+            "os players compram várias tortas e desfrutam de um belo banquete com o rei da torta"
+        ],
+        "SESSAO_1": [
+            "os players foram presos por comerem muita torta (o que era proibido no reino da torta), sentenciados a apodrecerem na prisão pelo resto de suas vidas",
+            "eles não fizeram mais nada, estão presos"
+        ],
+        "SESSAO_2": [
+            "eles ainda estão presos"
+        ],
+        "SESSAO_3": [
+            "presos por comerem muita torta no reino da torta"
+        ]
+    }
+}

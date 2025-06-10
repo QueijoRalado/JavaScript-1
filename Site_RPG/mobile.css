@@ -169,6 +169,7 @@ th, td {
 
 .pagina_atual{
     text-decoration: underline rgba(255, 255, 255, 0.806);
+    color: var(--cor-texto);
 }
 h1{
     text-align: center;

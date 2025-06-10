@@ -20,53 +20,82 @@
     </nav>
     <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="detalhes.html">Detalhes</a>
+          <a class="nav-link letra_pequena" aria-current="page" href="detalhes.html">Detalhes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link pagina_atual" href="#">Sessões</a>
         </li>
       </ul>
 
-    <h2 class="class_nome_da_campanha">SESSÃO 0</h2>
+    <h2 class="class_nome_da_campanha">SESSÃO 1</h2>
+
+    <button onclick="criar_sessao()">CRIAR SESSÃO</button>
 
     <div>
         <article class="cenas_descricao">
             <section>
                 <h3 class="letra_grande">CENAS</h3>
-                <button>CRIAR CENA</button><br><br>
+                <button id="id_criar_cena">CRIAR CENA</button><br><br>
                 <div id="id_cenas">
             </div>
             </section>
             <section>
                 <div>
                 <h3 class="letra_grande">DESCRIÇÃO:</h3><br>
-                <h3 class="letra_grande">CENA 0</h3>
+                <h3 class="letra_grande" id="cena_atual"></h3>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
+                    <textarea class="form-control" placeholder="Comente sobre sua cena aqui!" id="floatingTextarea2" style="height: 300px; width: 300px;">teste testado!!!</textarea>
+                    <label for="floatingTextarea2">Comente sobre sua cena aqui!</label>
                   </div>
             </div>
+            <br><br><button>SALVAR CONTEÚDO DA CENA</button>
             </section>
         </article>
     </div>
 
     <script>
-        let cenaCount = 0;
+    // criar nova cena
+
+        let numero_cena = 1;
+        criar_cena = document.getElementById('id_criar_cena')
+
+        criar_cena.addEventListener('click', function() {
+
+            const coisax = document.getElementById('id_cenas');
+
+            const nova_cena = document.createElement('p');
+            nova_cena.className = 'borda_cenas_descricao letra_pequena';
+            nova_cena.textContent = `CENA ${numero_cena}`;
     
-        document.querySelector('button').addEventListener('click', function() {
-            const container = document.getElementById('id_cenas');
-    
-            // Criar um novo parágrafo
-            const novaCena = document.createElement('p');
-            novaCena.className = 'borda_cenas_descricao letra_pequena';
-            novaCena.textContent = `CENA ${cenaCount}`;
-    
-            // Adicionar no container
-            container.appendChild(novaCena);
-    
-            // Atualizar o contador
-            cenaCount++;
-        });
+            coisax.appendChild(nova_cena);
+
+            if(numero_cena>=16){
+                alert("O limite de cenas foi atingido!")
+                coisax.removeChild(nova_cena);
+            }
+
+            numero_cena++;
+        })
+        
+    </script>
+
+    <script>
+        let numero_sessao = 2
+        function criar_sessao(){
+            alert(`Sessão ${numero_sessao} criada!`)
+
+            const nova_sessao = `SESSAO_${numero_sessao}`
+            
+            numero_sessao++
+        }
+
+
+
+
+
+        // pegar cenas do json já salvas e colocar na aba do texto
+        //let texto_da_cena = document.getElementById('floatingTextarea2').value
+
     </script>
     
 
