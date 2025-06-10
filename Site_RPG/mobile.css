@@ -164,6 +164,12 @@ th, td {
     border: 5px solid var(--cor-destaque);
     padding: 10px;
 }
+.sessoes{ 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+}
 
 /* --- Classes Gerais e Funcionalidades Adicionais --- */
 

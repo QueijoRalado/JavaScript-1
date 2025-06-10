@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessões</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .layout { display: flex; gap: 40px; }
+        .cenas, .descricao { flex: 1; }
+        .cena-item { cursor: pointer; padding: 5px; border: 1px solid #ccc; margin-bottom: 5px; }
+        .cena-item:hover { background-color: #eee; }
+
+    </style>
+</head>
+<body>
+    <div class="sessoes-header">
+        <button onclick="mudarSessao(-1)">&lt;</button>
+        <h2 id="titulo_sessao">Sessão 0</h2>
+        <button onclick="mudarSessao(1)">&gt;</button>
+        <button onclick="criarSessao()">Criar Sessão</button>
+    </div>
+
+    <div class="layout">
+        <div class="cenas">
+            <h3>CENAS</h3>
+            <button onclick="criarCena()">Criar Cena</button>
+            <div id="lista_cenas"></div>
+        </div>
+
+        <div class="descricao">
+            <h3>VOCÊ ESTÁ NA: <span id="cena_atual_titulo"></span></h3>
+            <textarea id="descricao_cena" style="width: 100%; height: 300px;"></textarea><br><br>
+            <button onclick="salvarDescricao()">Salvar Descrição</button>
+        </div>
+    </div>
+
+    <script>
+        const campanha =  JSON.parse(localStorage.getItem("campanha_selecionada"));
+        const campanha_escolhida = campanha.nome.toLowerCase()
+        const campanha_ = campanha_escolhida.replace(" ", "_")
+        let dados = JSON.parse(localStorage.getItem(`sessoes_rpg_${campanha_}`)) || [];
+        let sessaoAtual = 0;
+        let cenaSelecionada = 0;
+
+        function salvarDados() {
+            localStorage.setItem(`sessoes_rpg_${campanha_}`, JSON.stringify(dados));
+        }
+
+        function atualizarInterface() {
+            document.getElementById('titulo_sessao').textContent = `Sessão ${sessaoAtual}`;
+            const listaCenas = document.getElementById('lista_cenas');
+            listaCenas.innerHTML = '';
+
+            if (!dados[sessaoAtual]) dados[sessaoAtual] = [];
+            dados[sessaoAtual].forEach((cena, index) => {
+                const p = document.createElement('div');
+                p.className = 'cena-item';
+                p.textContent = `Cena ${index + 1}`;
+                p.onclick = () => selecionarCena(index);
+                listaCenas.appendChild(p);
+            });
+
+            selecionarCena(cenaSelecionada);
+        }
+
+        function criarSessao() {
+            if (dados.length >= 50) return alert('Limite de 50 sessões atingido!');
+            dados.push([]);
+            sessaoAtual = dados.length - 1;
+            cenaSelecionada = 0;
+            salvarDados();
+            atualizarInterface();
+        }
+
+        function criarCena() {
+            if (dados[sessaoAtual].length >= 15) return alert('Limite de 15 cenas por sessão!');
+            dados[sessaoAtual].push("");
+            cenaSelecionada = dados[sessaoAtual].length - 1;
+            salvarDados();
+            atualizarInterface();
+        }
+
+        function selecionarCena(index) {
+            cenaSelecionada = index;
+            document.getElementById('cena_atual_titulo').textContent = `Cena ${index + 1}`;
+            document.getElementById('descricao_cena').value = dados[sessaoAtual][index] || '';
+        }
+
+        function salvarDescricao() {
+            dados[sessaoAtual][cenaSelecionada] = document.getElementById('descricao_cena').value;
+            salvarDados();
+            alert('Descrição salva!');
+        }
+
+        function mudarSessao(direcao) {
+            const novaSessao = sessaoAtual + direcao;
+            if (novaSessao >= 0 && novaSessao < dados.length) {
+                sessaoAtual = novaSessao;
+                cenaSelecionada = 0;
+                atualizarInterface();
+            }
+        }
+
+        atualizarInterface();
+    </script>
+</body>
+</html>
