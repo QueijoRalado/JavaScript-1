@@ -88,6 +88,8 @@
            let conteudo_jogadores = JSON.parse(localStorage.getItem("jogadores"));
            for (const [nome_player, conteudo_personagens] of Object.entries(conteudo_jogadores)){         
                const divJogador = document.createElement("div");
+               // ESSE É O BOTÃO VITOR ESSE BOTÃO AQUI EM BAIXO O "<button class="margin_botao_deletar botao_criar_personagem"><i class="bi bi-trash"></i></button> QUE TEM QUE COLOCAR
+               // A FUNÇÃO DE DELETAR O JOGADOR!!!!!!!!!!!!!!!"
                divJogador.innerHTML = `<h2>
                 <button class="margin_botao_deletar botao_criar_personagem"><i class="bi bi-trash"></i></button>
                 ${nome_player.toUpperCase()}
