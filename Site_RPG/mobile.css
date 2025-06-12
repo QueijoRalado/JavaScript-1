@@ -143,10 +143,11 @@ th, td {
     padding-top: 7px;
     border: solid 5px;
     border-radius: 5px;
-    border-color: rgb(48, 143, 53);
+    border-color: var(--cor-destaque);
     justify-content: center;
-    color: #108141;
+    color: var(--cor-texto);
     margin-bottom: 20px;
+    padding: 50px;
 }
 
 /* --- Seção das Sessões (quase rimou) --- */
@@ -206,6 +207,10 @@ a{
     text-decoration: none;
     transition: color 0.3s;
 }
+hr{
+    color: var(--cor-destaque);
+    height: 5px;
+}
 a:hover, a:active{
     color: var(--cor-destaque);
 }
@@ -227,4 +232,23 @@ a:hover, a:active{
     cursor: pointer;
     font-weight: bold;
     margin: 20px;
+}
+.botao_criar_personagem{
+    color: var(--cor-texto);
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+    border-radius: 5px;
+    border-style: none;
+    --bs-btn-hover-bg: var(--cor-destaque);
+}
+.margin_botao_deletar{
+    margin-right: 30px;
+}
+.margin_botao_editar{
+    margin-left: 30px;
+}
+.botoes{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
