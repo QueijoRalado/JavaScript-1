@@ -79,7 +79,11 @@
 
          document.addEventListener("DOMContentLoaded", (event) => {
          console.log("DOM fully loaded and parsed");
-         //const salvarAlteracoesBtn = document.getElementById('salvarAlteracoes');
+         
+            if (!localStorage.getItem("jogadores")) {
+            localStorage.setItem("jogadores", JSON.stringify({}));
+         }
+
          carregarConteudo();
          });
          function carregarConteudo(){
@@ -91,7 +95,7 @@
                // ESSE É O BOTÃO VITOR ESSE BOTÃO AQUI EM BAIXO O "<button class="margin_botao_deletar botao_criar_personagem"><i class="bi bi-trash"></i></button> QUE TEM QUE COLOCAR
                // A FUNÇÃO DE DELETAR O JOGADOR!!!!!!!!!!!!!!!"
                divJogador.innerHTML = `<h2>
-                <button class="margin_botao_deletar botao_criar_personagem"><i class="bi bi-trash"></i></button>
+                <button class="margin_botao_deletar botao_criar_personagem" onclick="excluirJogador('${nome_player}')"><i class="bi bi-trash"></i></button>
                 ${nome_player.toUpperCase()}
                 <button type="button" class="btn btn-primary botao_criar_personagem margin_botao_editar" onclick="abrirModalAddPersonagem('${nome_player}')" >
                <i class="bi bi-plus-lg"></i>
@@ -190,7 +194,6 @@
          }
          
          function adicionarPersonagem(){
-            //event.preventDefault(); // Evita o envio do formulário e recarregamento da página
 
             const nome = document.getElementById("nome").value;
             const campanha = document.getElementById("campanhas").value;
@@ -200,12 +203,6 @@
             const mana = document.getElementById("mana").value;
             const descricao = document.getElementById("descricao").value;
 
-            // Verifica se todos os campos estão preenchidos
-            // if (!nome || !descricao) {
-            //    alert("Por favor, preencha os campos necessários!");
-            //    return;
-            // }
-            //a key é o nome 
             const novoPersonagem = [                             
                campanha,
                raca,
@@ -267,6 +264,22 @@
                }
             }
          }
+
+            function excluirJogador(jogador) {
+            if (confirm(`Tem certeza que deseja deletar o jogador ${jogador} e todos os seus personagens?`)) {
+               let jogadores = JSON.parse(localStorage.getItem("jogadores"));
+
+            if (jogadores[jogador]) {
+               delete jogadores[jogador];
+               localStorage.setItem("jogadores", JSON.stringify(jogadores));
+               alert(`Jogador ${jogador} foi removido com sucesso.`);
+               location.reload(); // recarrega a página para refletir as mudanças
+            } else {
+               alert("Jogador não encontrado.");
+            }
+  }
+}
+
       </script>
       <script src="../js/tema.js"></script>
    </body>
