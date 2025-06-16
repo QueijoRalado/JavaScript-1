@@ -110,7 +110,7 @@
                  const divPersonagensJogador = document.createElement("div");
                  divPersonagensJogador.setAttribute("class", `personagem_${nome_personagem}`); 
          
-                 //let nome_personagem = Object.keys(personagem);
+
                  let [campanha, raca, classe, vida, mana, descricao] = dados_ficha;
                  
 
@@ -158,22 +158,16 @@
                console.log(`Jogador ou personagem não encontrado.`);
            }
            console.log(conteudo_jogadores_remover_personagem);
-           //console.log(JSON.parse(localStorage.getItem("jogadores2")));
            localStorage.setItem("jogadores", JSON.stringify(conteudo_jogadores_remover_personagem));
          
            window.location.reload();
          } 
-         
-         
-         }
-         
+      }
          function abrirModalAddPersonagem(jog){
             conteudo_jogadores = JSON.parse(localStorage.getItem("jogadores"));
             campanhas_existentes = JSON.parse(localStorage.getItem("campanhas"));
             opcoes = document.getElementById('campanhas');
-            //para limpar todo o formulário antes de preencher com novos conteúdos
             document.getElementById('formPersonagem').reset();
-
 
             tamanho = campanhas_existentes.length
             for(let i=0;i<tamanho;i++){
@@ -182,14 +176,8 @@
                nova_opcao.innerText = campanhas_existentes[i].nome
                opcoes.appendChild(nova_opcao)
             }
-            
-            
-            
-
-            // Exibe o ID da campanha na modal (você pode substituir por outros dados)
             document.getElementById("modalAddNovoPersonagemJogadorLabel").innerText = `Adicionando um novo personagem ao jogador: ${jog}` 
             document.getElementById("nomeID").value = jog.toString()
-            // Exibe a modal
             modalNovoPersonagem.show();     
          }
          
@@ -225,13 +213,6 @@
 
             console.log("adicionarPersonagem");
             location.reload();
-
-               // nome = document.getElementById('nome').value
-               // console.log(nome)
-               // jogadores = document.createElement('li')
-               // jogadores.innerText = nome
-               // todos = document.getElementById('lista')
-               // todos.appendChild(jogadores)
          }
          function editarPersonagem(){
             modalNovoPersonagem.show();
@@ -241,7 +222,9 @@
             let nome = window.prompt('Nome do jogador...');
             
             let jogadores = JSON.parse(localStorage.getItem("jogadores"));
+            console.log(jogador_nome)
             for (const [jogador_nome] of Object.entries(jogadores)) {
+               console.log(jogador_nome)
                if(nome.toLowerCase()===jogador_nome.toLowerCase()){
                   alert('Este jogador já existe!')
                   break
@@ -264,7 +247,6 @@
                }
             }
          }
-
             function excluirJogador(jogador) {
             if (confirm(`Tem certeza que deseja deletar o jogador ${jogador} e todos os seus personagens?`)) {
                let jogadores = JSON.parse(localStorage.getItem("jogadores"));
@@ -273,7 +255,7 @@
                delete jogadores[jogador];
                localStorage.setItem("jogadores", JSON.stringify(jogadores));
                alert(`Jogador ${jogador} foi removido com sucesso.`);
-               location.reload(); // recarrega a página para refletir as mudanças
+               location.reload();
             } else {
                alert("Jogador não encontrado.");
             }
