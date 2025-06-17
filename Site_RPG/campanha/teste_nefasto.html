@@ -84,7 +84,7 @@
                const divAddJogador = document.createElement("div");
                divAddJogador.innerHTML= `<h2>
                 <button class="margin_botao_deletar botao_criar_personagem" onclick="excluirJogador('${nome_player}')"><i class="bi bi-trash"></i></button>
-                ${nome_player.toUpperCase()}
+                ${nome_player.toUpperCase().replaceAll("_"," ")}
                 <button type="button" class="btn btn-primary botao_criar_personagem margin_botao_editar" onclick="abrirModalAddPersonagem('${nome_player}')" >
                <i class="bi bi-plus-lg"></i>
                </button> 
@@ -102,7 +102,7 @@
                    divPersonagensJogador.innerHTML = `
                      <section id class="chops">
                      <button class="margin_botao_deletar botao_criar_personagem" onclick=excluirPersonagem('${nome_player}','${nome_personagem}'); ><i class="bi bi-trash"></i></button>
-                     <h2>${nome_personagem.replaceAll("_"," ")}</h2> <h2>(${nome_player})</h2>
+                     <h2>${nome_personagem.replaceAll("_"," ")}</h2> <h2>(${nome_player.replaceAll("_"," ")})</h2>
                      <button class="margin_botao_editar botao_criar_personagem" onclick=editarPersonagem('${nome_player}','${nome_personagem}'); ><i class="bi bi-pencil-fill"></i></button>
          
                      </section>

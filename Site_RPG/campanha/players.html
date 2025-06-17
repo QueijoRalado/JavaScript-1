@@ -218,12 +218,55 @@
          function editarPersonagem(){
             modalNovoPersonagem.show();
          }
+<<<<<<< HEAD
+         function adicionarJogador() {
+    let caixa_grande = document.getElementById('id_caixas_de_escolha_players');
+    let nome = window.prompt('Nome do jogador...').trim().replaceAll(" ", "_");
+
+    if (!nome) return;
+
+    let jogadores = JSON.parse(localStorage.getItem("jogadores")) || {};
+
+    if (Object.keys(jogadores).some(j => j.toLowerCase() === nome.toLowerCase())) {
+        alert("Este jogador já existe!");
+        return;
+    }
+
+    // Criar o HTML do jogador
+    const divJogador = document.createElement("div");
+    divJogador.setAttribute("id", `jogador_${nome}`);
+    divJogador.setAttribute("class", "caixas_de_escolha_players");
+
+    const divAddJogador = document.createElement("div");
+    divAddJogador.innerHTML = `
+        <section class="chops">
+            <button class="margin_botao_deletar botao_criar_personagem" onclick="excluirJogador('${nome}')">
+                <i class="bi bi-trash"></i>
+            </button>
+            <h2>${nome}</h2>
+            <button class="margin_botao_editar botao_criar_personagem" onclick="abrirModalAddPersonagem('${nome}')">
+                <i class="bi bi-plus-lg"></i>
+            </button>
+        </section>
+    `;
+
+    divJogador.appendChild(divAddJogador);
+    caixa_grande.appendChild(divJogador);
+
+    // Atualiza localStorage
+    jogadores[nome] = {};
+    localStorage.setItem("jogadores", JSON.stringify(jogadores));
+}
+
+
          function adicionarJogador(){
             let caixa_gande = document.getElementById('id_caixas_de_escolha_players');
             let nome = window.prompt('Nome do jogador...');
             
             let jogadores = JSON.parse(localStorage.getItem("jogadores"));
+            console.log(jogador_nome)
             for (const [jogador_nome] of Object.entries(jogadores)) {
+               console.log(jogador_nome)
                if(nome.toLowerCase()===jogador_nome.toLowerCase()){
                   alert('Este jogador já existe!')
                   break
@@ -246,7 +289,7 @@
                }
             }
          }
-
+>>>>>>> f5b3824f04c3936232de8002d1ce984c343d396d
             function excluirJogador(jogador) {
             if (confirm(`Tem certeza que deseja deletar o jogador ${jogador} e todos os seus personagens?`)) {
                let jogadores = JSON.parse(localStorage.getItem("jogadores"));
