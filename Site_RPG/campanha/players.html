@@ -110,7 +110,7 @@
                  const divPersonagensJogador = document.createElement("div");
                  divPersonagensJogador.setAttribute("class", `personagem_${nome_personagem}`); 
          
-                 //let nome_personagem = Object.keys(personagem);
+
                  let [campanha, raca, classe, vida, mana, descricao] = dados_ficha;
                  
 
@@ -158,23 +158,17 @@
                console.log(`Jogador ou personagem não encontrado.`);
            }
            console.log(conteudo_jogadores_remover_personagem);
-           //console.log(JSON.parse(localStorage.getItem("jogadores2")));
            localStorage.setItem("jogadores", JSON.stringify(conteudo_jogadores_remover_personagem));
          
            window.location.reload();
          } 
-         
-         
-         }
-         
+      }
          function abrirModalAddPersonagem(jog){
             conteudo_jogadores = JSON.parse(localStorage.getItem("jogadores"));
             console.log(conteudo_jogadores)
             campanhas_existentes = JSON.parse(localStorage.getItem("campanhas"));
             opcoes = document.getElementById('campanhas');
-            //para limpar todo o formulário antes de preencher com novos conteúdos
             document.getElementById('formPersonagem').reset();
-
 
             tamanho = campanhas_existentes.length
             for(let i=0;i<tamanho;i++){
@@ -183,14 +177,8 @@
                nova_opcao.innerText = campanhas_existentes[i].nome
                opcoes.appendChild(nova_opcao)
             }
-            
-            
-            
-
-            // Exibe o ID da campanha na modal (você pode substituir por outros dados)
             document.getElementById("modalAddNovoPersonagemJogadorLabel").innerText = `Adicionando um novo personagem ao jogador: ${jog}` 
             document.getElementById("nomeID").value = jog.toString()
-            // Exibe a modal
             modalNovoPersonagem.show();     
          }
          
@@ -226,56 +214,38 @@
 
             console.log("adicionarPersonagem");
             location.reload();
-
-               // nome = document.getElementById('nome').value
-               // console.log(nome)
-               // jogadores = document.createElement('li')
-               // jogadores.innerText = nome
-               // todos = document.getElementById('lista')
-               // todos.appendChild(jogadores)
          }
          function editarPersonagem(){
             modalNovoPersonagem.show();
          }
-         function adicionarJogador() {
-    let caixa_grande = document.getElementById('id_caixas_de_escolha_players');
-    let nome = window.prompt('Nome do jogador...').trim().replaceAll(" ", "_");
+         function adicionarJogador(){
+            let caixa_gande = document.getElementById('id_caixas_de_escolha_players');
+            let nome = window.prompt('Nome do jogador...');
+            
+            let jogadores = JSON.parse(localStorage.getItem("jogadores"));
+            for (const [jogador_nome] of Object.entries(jogadores)) {
+               if(nome.toLowerCase()===jogador_nome.toLowerCase()){
+                  alert('Este jogador já existe!')
+                  break
+               }
+               else{
+                  const divJogador = document.createElement("div");
+                  divJogador.innerHTML = `<h2>${nome}</h2>`
+                  divJogador.setAttribute("id", `jogador_${nome}`);
+                  divJogador.setAttribute ('class', 'caixas_de_escolha_players')
+                  const divAddJogador = document.createElement("div");
+                  divAddJogador.innerHTML= `
+                  <button type="button" class="btn btn-primary"  onclick="abrirModalAddPersonagem('${nome}')" >
+                  <i class="bi bi-plus-lg"></i></button>
+                  `
+                  divJogador.appendChild(divAddJogador);
 
-    if (!nome) return;
-
-    let jogadores = JSON.parse(localStorage.getItem("jogadores")) || {};
-
-    if (Object.keys(jogadores).some(j => j.toLowerCase() === nome.toLowerCase())) {
-        alert("Este jogador já existe!");
-        return;
-    }
-
-    // Criar o HTML do jogador
-    const divJogador = document.createElement("div");
-    divJogador.setAttribute("id", `jogador_${nome}`);
-    divJogador.setAttribute("class", "caixas_de_escolha_players");
-
-    const divAddJogador = document.createElement("div");
-    divAddJogador.innerHTML = `
-        <section class="chops">
-            <button class="margin_botao_deletar botao_criar_personagem" onclick="excluirJogador('${nome}')">
-                <i class="bi bi-trash"></i>
-            </button>
-            <h2>${nome}</h2>
-            <button class="margin_botao_editar botao_criar_personagem" onclick="abrirModalAddPersonagem('${nome}')">
-                <i class="bi bi-plus-lg"></i>
-            </button>
-        </section>
-    `;
-
-    divJogador.appendChild(divAddJogador);
-    caixa_grande.appendChild(divJogador);
-
-    // Atualiza localStorage
-    jogadores[nome] = {};
-    localStorage.setItem("jogadores", JSON.stringify(jogadores));
-}
-
+                  caixa_gande.appendChild(divJogador)
+                  localStorage.setItem("jogadores", nome);
+                  break
+               }
+            }
+         }
 
             function excluirJogador(jogador) {
             if (confirm(`Tem certeza que deseja deletar o jogador ${jogador} e todos os seus personagens?`)) {
@@ -285,7 +255,7 @@
                delete jogadores[jogador];
                localStorage.setItem("jogadores", JSON.stringify(jogadores));
                alert(`Jogador ${jogador} foi removido com sucesso.`);
-               location.reload(); // recarrega a página para refletir as mudanças
+               location.reload();
             } else {
                alert("Jogador não encontrado.");
             }

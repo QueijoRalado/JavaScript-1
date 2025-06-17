@@ -70,9 +70,8 @@
 
     <script>
 
-        // Função para adicionar nova campanha
         function adicionarCampanha(event) {
-            event.preventDefault(); // Evita o envio do formulário e recarregamento da página
+            event.preventDefault();
 
             const nome = document.getElementById("nome").value;
             const img = document.getElementById("imagem").value
@@ -80,7 +79,6 @@
             const inicio = document.getElementById("inicio").value;
             const fim = document.getElementById("fim").value;
 
-            // Verifica se todos os campos estão preenchidos
             if (!nome || !descricao) {
                 alert("Por favor, preencha os campos necessários!");
                 return;
@@ -95,18 +93,13 @@
                 fim
             };
 
-            // Carrega as campanhas existentes ou cria uma lista vazia
             let campanhas = JSON.parse(localStorage.getItem("campanhas")) || [];
             campanhas.push(novaCampanha);
             
-            // Salva novamente no localStorage
             localStorage.setItem("campanhas", JSON.stringify(campanhas));
 
-            // Limpa o formulário
             document.getElementById("formCampanha").reset();
 
-            // Atualiza a lista de campanhas
-            //carregarCampanhas();
             window.location.href = "./";
         }
         let campanhas = JSON.parse(localStorage.getItem("campanhas")) || [];
@@ -115,26 +108,21 @@
         }
         function adicionarElementoCampanha(campanha, pos) {      
         const container = document.getElementById("listaCampanhas");
-        // Criar um novo elemento para a campanha
+ha
         const sectionCampanha = document.createElement("section");
-        //sectionCampanha.setAttribute("id", campanha.nome);            
+      
         sectionCampanha.setAttribute("id", `campanha-${pos}`);            
         sectionCampanha.classList.add("campanha", "item2");
 
-        // Adicionar conteúdo à campanha
-        // <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarCampanha">Editar via Target</button>
         sectionCampanha.innerHTML = `<a>
             <h3>${campanha.nome}</h3>
             <p>${campanha.descricao}</p></a>        
         `;
-        
-        // Adicionar o novo elemento ao container
+
         container.appendChild(sectionCampanha);
         
     
     }
-
-        // Adiciona o evento de submit no formulário
         document.getElementById("formCampanha").addEventListener("submit", adicionarCampanha);
 
    
